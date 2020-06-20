@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Creando un sitio web con Hugo - ESC</title>
+  <meta name="description" content="Un sitio nuevo">
+  <meta name="author" content="Enrique Saborit Crespo"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "ESC",
+    
+    "url": "https:\/\/esaborit.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/esaborit.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/esaborit.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/esaborit.github.io\/2020\/06\/01\/creando-un-sitio-web-con-hugo\/",
+          "name": "Creando un sitio web con hugo"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Enrique Saborit Crespo"
+  },
+  "headline": "Creando un sitio web con Hugo",
+  "description" : "Creo este post para acordarme de como voy a instalar este blog utilizando Hugo. Mi entorno de desarrollo está compuesto de un ordenador con Debian 10 como SO, donde instalaré Hugo, VSCodium como editor de código y Github como hosting y repositorio del sitio web del blog.\n",
+  "inLanguage" : "es",
+  "wordCount":  773 ,
+  "datePublished" : "2020-06-01T05:59:39",
+  "dateModified" : "2020-06-01T05:59:39",
+  "image" : "https:\/\/esaborit.github.io",
+  "keywords" : [ "Hugo, sitioweb" ],
+  "mainEntityOfPage" : "https:\/\/esaborit.github.io\/2020\/06\/01\/creando-un-sitio-web-con-hugo\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/esaborit.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/esaborit.github.io",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Creando un sitio web con Hugo" />
+<meta property="og:description" content="Un sitio nuevo">
+<meta property="og:image" content="https://esaborit.github.io/img/post/hugo-logo-wide.svg" />
+<meta property="og:url" content="https://esaborit.github.io/2020/06/01/creando-un-sitio-web-con-hugo/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="ESC" />
+
+  <meta name="twitter:title" content="Creando un sitio web con Hugo" />
+  <meta name="twitter:description" content="Un sitio nuevo">
+  <meta name="twitter:image" content="https://esaborit.github.io/img/post/hugo-logo-wide.svg" />
+  <meta name="twitter:card" content="summary" />
+  <link href='https://esaborit.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.72.0" />
+  <link rel="alternate" href="https://esaborit.github.io/index.xml" type="application/rss+xml" title="ESC"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://esaborit.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://esaborit.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://esaborit.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Conmuta navegación</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://esaborit.github.io">ESC</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Inicio" href="/">Inicio</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">Contenidos</a>
+              <div class="navlinks-children">
+                
+                  <a href="/temas">Temas</a>
+                
+                  <a href="/proyectos">Proyectos</a>
+                
+                  <a href="/categorias">Categorias</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 
+      
+         
+          data-img-src-1="/img/post/hugo-logo-wide.svg" 
+         
+         data-img-desc-1="Logo de hugo"
+      ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>Creando un sitio web con Hugo</h1>
+                  
+                    
+                      <h2 class="post-subheading">Un sitio nuevo</h2>
+                    
+                  
+                  
+                    <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publicado el 01-06-2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutos
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;773&nbsp;palabras
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Enrique Saborit Crespo
+    
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Creando un sitio web con Hugo</h1>
+              
+              
+              
+                
+                  <h2 class="post-subheading">Un sitio nuevo</h2>
+                
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publicado el 01-06-2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutos
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;773&nbsp;palabras
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Enrique Saborit Crespo
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <article role="main" class="blog-post">
+                <p>Creo este post para acordarme de como voy a instalar este blog utilizando Hugo. Mi entorno de desarrollo está compuesto de un ordenador con Debian 10 como SO, donde instalaré Hugo, VSCodium como editor de código y Github como hosting y repositorio del sitio web del blog.</p>
+<p>Lo primero que debo hacer es preparar el entorno de trabajo.
+Necesito instalar Git, Hugo y <strong>VSCodium</strong>. Además debo crear, si no la tengo ya, una cuenta en Github.</p>
+<h4 id="git">Git</h4>
+<p>Instalo git desde la consola</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    $ sudo apt-get install git
+</code></pre></div><p>Compruebo que está correctamente instalado con el siguiente comando:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    $ git --version
+    git version 2.20.1
+
+</code></pre></div><h5 id="configurando-git">Configurando Git</h5>
+<p>Ahora que he instalado Git, debo configurarlo para que los mensajes de confirmación generados contengan su información correcta.</p>
+<p>Esto lo puedo hacer usando el comando &ldquo;git config&rdquo;. Tengo que aportar un nombre de usuario y una dirección de correo electrónico porque Git incorpora esta información en cada confirmación que haga. Voy a poner mi usuario y correo que proporcioné al crear la cuenta de Github:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    $ git config --global user.name <span class="s2">&#34;Mi_nombre&#34;</span>
+    $ git config --global user.email <span class="s2">&#34;mi_nombre@dominio.com&#34;</span>
+</code></pre></div><p>Puedo ver todos los elementos de configuración que se han guardado escribiendo:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    $ git config --list
+    Output
+    user.name<span class="o">=</span>Mi_nombre
+    user.email<span class="o">=</span>mi_nombre@dominio.com
+    ...
+</code></pre></div><p>La información se almacena en su archivo de configuración <code>&quot;.gitconfig&quot;</code>, que se puede editar a mano con nano, por ejemplo:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    $ nano ~/.gitconfig
+    ~ / .gitconfig contenidos
+    <span class="o">[</span>user<span class="o">]</span>
+      <span class="nv">name</span> <span class="o">=</span> Mi_nombre
+      <span class="nv">email</span> <span class="o">=</span> mi_nombre@dominio.com
+</code></pre></div><p>Hay muchas otras opciones que puede configurar, pero estas son las dos esenciales. Si omito este paso, es probable que aparezcan advertencias al ejecutar los comandos de Git.</p>
+<h4 id="hugo">Hugo</h4>
+<p>He decidido instalar Hugo con snap porque los paquetes .deb de los repositorios ofrecen versiones mas antiguas del programa.  Para instalar Hugo como snap en Debian 10, primero habilito snapd</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    $ sudo apt update
+    $ sudo apt install snapd
+</code></pre></div><p>Para después instalarlo así</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    $ sudo snap install hugo
+</code></pre></div><p>Compruebo la versión con</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    $ hugo version
+    Hugo Static Site Generator v0.72.0 linux/amd64 BuildDate: 2020-05-31T18:06:12Z
+</code></pre></div><h4 id="sitio-web-en-local">Sitio web en local</h4>
+<p>Ahora ya puede crear mi sitio web en local. Desde la consola me sitúo dentro de la carpeta dentro de la que voy a crear el sitio web.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    $ <span class="nb">cd</span> /Proyectos
+</code></pre></div><p>Creo el framework para mi sitio web con Hugo ejecutando el siguiente comando:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    $ hugo new site mi-sitio
+</code></pre></div><p>Si todo ha ido bien veré el siguiente texto:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Congratulations! Your new Hugo site is created in ~/Documents/websitename.
+
+Just a few more steps and you are ready to go:
+
+1. Download a theme into the same-named folder.
+   Choose a theme from https://themes.gohugo.io/ or
+   create your own with the <span class="s2">&#34;hugo new theme &lt;THEMENAME&gt;&#34;</span> command.
+2. Perhaps you want to add some content. You can add single files
+   with <span class="s2">&#34;hugo new &lt;SECTIONNAME&gt;/&lt;FILENAME&gt;.&lt;FORMAT&gt;&#34;</span>.
+3. Start the built-in live server via <span class="s2">&#34;hugo server&#34;</span>.
+
+Visit https://gohugo.io/ <span class="k">for</span> quickstart guide and full documentation.
+Veo su contenido
+</code></pre></div><p>Entro de la carpeta del sitio recién creado y veo su contenido,</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">    esc@pc:$ /Proyectos/mi-sitio tree
+    .
+    ├── archetypes
+    │   └── default.md
+    ├── config.toml
+    ├── content
+    ├── data
+    ├── layouts
+    ├── static
+    └── themes
+
+    <span class="m">6</span> directories, <span class="m">2</span> files
+</code></pre></div><p>Puedo ver que se han creado 6 carpetas y dos archivos. Me centro en lo mas importante para empezar, las carpetas <code>&quot;content&quot;</code>, <code>&quot;themes&quot;</code>,
+<code>&quot;data&quot;</code> y el archivo <code>&quot;config.toml&quot;</code> dentro del cual están los parámetros de configuración del sitio.</p>
+<p>Lo siguiente que necesito es bajarme un tema, pues no viene con ninguno por defecto. Yo he elegido el tema beautifulhugo, lo descargo desde su sitio web en formato <a href="https://github.com/halogenica/beautifulhugo/archive/master.zip">zip</a> , lo descomprimo y lo copio dentro de la carpeta <code>&quot;themes&quot;</code> de <code>&quot;mi-sitio&quot;</code>.</p>
+<p>Entro en la carpeta beautifulhugo descomprimida y veo que hay una carpeta llamada <code>&quot;exampleSite&quot;</code> que contiene las siguientes carpetas y ficheros.
+
+<link rel="stylesheet" href="https://esaborit.github.io/css/hugo-easy-gallery.css" />
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/post/carpetas.png" alt="/img/post/carpetas.png"/>
+    </div>
+    <a href="/img/post/carpetas.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+Copio todo su contenido y lo pego en el directorio raíz de <code>&quot;mi-sitio&quot;</code>. Ahora ya dispongo de un sitio web de ejemplo que modificaré a mi antojo.</p>
+<p>Puedo ver como se ve ejecuntando el siguiente comando:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">  $ hugo server
+
+                   <span class="p">|</span> ES   
+-------------------+------
+  Pages            <span class="p">|</span>  <span class="m">48</span>  
+  Paginator pages  <span class="p">|</span>   <span class="m">2</span>  
+  Non-page files   <span class="p">|</span>   <span class="m">0</span>  
+  Static files     <span class="p">|</span> <span class="m">188</span>  
+  Processed images <span class="p">|</span>   <span class="m">0</span>  
+  Aliases          <span class="p">|</span>  <span class="m">12</span>  
+  Sitemaps         <span class="p">|</span>   <span class="m">1</span>  
+  Cleaned          <span class="p">|</span>   <span class="m">0</span>  
+
+Built in <span class="m">579</span> ms
+Watching <span class="k">for</span> changes in /Proyectos/mi_sitio/<span class="o">{</span>archetypes,content,data,layouts,static,themes<span class="o">}</span>
+Watching <span class="k">for</span> config changes in /Proyectos/mi_sitio/config.toml
+Environment: <span class="s2">&#34;development&#34;</span>
+Serving pages from memory
+Running in Fast Render Mode. For full rebuilds on change: hugo server --disableFastRender
+Web Server is available at http://localhost:1313/ <span class="o">(</span><span class="nb">bind</span> address 127.0.0.1<span class="o">)</span>
+Press Ctrl+C to stop
+</code></pre></div><p>Debo copiar la dirección <code>http://localhost:1313/</code> en la barra de direcciones de un navegador web para poder verlo.
+Después de confirmar que es el tema que quiero usar para mi sitio cierro el servidor local de Hugo desde la terminal, utilizando la combinación de teclas <code>Ctrl + C</code>.</p>
+                <hr/>
+                <p class="post-meta">
+                    <span class="post-meta">
+                        
+                            <i class="fas fa-tags"></i> 
+                            <a href="https://esaborit.github.io/temas/hugo/">Hugo</a>&nbsp;             
+                        
+                        
+                            &nbsp;|&nbsp;<i class="fas fa-folder">: </i> 
+                            <a href="https://esaborit.github.io/categorias/blog/">Blog</a>&nbsp;                 
+                        
+                        
+                            &nbsp;|&nbsp;<i class="fas fa-tasks"></i> 
+                            <a href="https://esaborit.github.io/proyectos/blog-hugo/" alt="Proyectos">blog-Hugo</a>&nbsp;                 
+                            
+                    </span>
+                </p>
+                     
+                <h4 class="see-also">Ver también</h4>
+                <ul>
+                     
+                    <li><a href="/2020/06/02/personalizando-el-tema-beautifulhugo/">Personalizando el tema beautifulhugo</a></li>
+                    
+                    <li><a href="/2020/05/30/instalando-vscodium-en-debian-10/">Instalando VSCodium en Debian 10</a></li>
+                    
+                </ul>
+
+                 
+            </article>
+
+            
+            <ul class="pager blog-pager">
+                
+                <li class="previous">
+                    <a href="https://esaborit.github.io/2020/05/30/instalando-vscodium-en-debian-10/" data-toggle="tooltip" data-placement="top" title="Instalando VSCodium en Debian 10">&larr; Artículo anterior</a>
+                </li>
+                 
+                <li class="next">
+                    <a href="https://esaborit.github.io/2020/06/02/personalizando-el-tema-beautifulhugo/" data-toggle="tooltip" data-placement="top" title="Personalizando el tema beautifulhugo">Artículo siguiente &rarr;</a>
+                </li>
+                
+            </ul>
+                
+
+        </div>
+    </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/esaborit" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/esaborit" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/esaborit" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="https://esaborit.github.io/">Enrique Saborit Crespo</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://esaborit.github.io">ESC</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.72.0</a> alimentada &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptado de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://esaborit.github.io/js/main.js"></script>
+<script src="https://esaborit.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://esaborit.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

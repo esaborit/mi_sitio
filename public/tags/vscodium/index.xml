@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VSCodium on ESC</title>
+    <link>https://esaborit.github.io/tags/vscodium/</link>
+    <description>Recent content in VSCodium on ESC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 30 May 2020 05:59:39 +0200</lastBuildDate>
+    
+	<atom:link href="https://esaborit.github.io/tags/vscodium/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Instalando VSCodium en Debian 10</title>
+      <link>https://esaborit.github.io/2020/05/30/instalando-vscodium-en-debian-10/</link>
+      <pubDate>Sat, 30 May 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/2020/05/30/instalando-vscodium-en-debian-10/</guid>
+      <description>&lt;p&gt;VSCodium es una una bifurcación del código de Visual Studio de Microsoft creada para que los desarrolladores no tengan que lidiar con la telemetría/rastreadores que tiene Visual Studio Code.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

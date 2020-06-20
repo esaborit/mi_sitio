@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>blog-Hugo on ESC</title>
+    <link>https://esaborit.github.io/proyectos/blog-hugo/</link>
+    <description>Recent content in blog-Hugo on ESC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Tue, 02 Jun 2020 05:59:39 +0200</lastBuildDate>
+    
+	<atom:link href="https://esaborit.github.io/proyectos/blog-hugo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Personalizando el tema beautifulhugo</title>
+      <link>https://esaborit.github.io/2020/06/02/personalizando-el-tema-beautifulhugo/</link>
+      <pubDate>Tue, 02 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/2020/06/02/personalizando-el-tema-beautifulhugo/</guid>
+      <description>&lt;p&gt;Para empezar a personalizar el tema que he instalado en mi sitio web, lo primero que debo de hacer es modificar el fichero &lt;code&gt;config.toml&lt;/code&gt; que he copiado en el directorio raíz de mi sitio desde la carpeta llamada &amp;ldquo;exampleSite&amp;rdquo; de dicho tema.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Creando un sitio web con Hugo</title>
+      <link>https://esaborit.github.io/2020/06/01/creando-un-sitio-web-con-hugo/</link>
+      <pubDate>Mon, 01 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/2020/06/01/creando-un-sitio-web-con-hugo/</guid>
+      <description>&lt;p&gt;Creo este post para acordarme de como voy a instalar este blog utilizando Hugo. Mi entorno de desarrollo está compuesto de un ordenador con Debian 10 como SO, donde instalaré Hugo, VSCodium como editor de código y Github como hosting y repositorio del sitio web del blog.&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Instalando VSCodium en Debian 10</title>
+      <link>https://esaborit.github.io/2020/05/30/instalando-vscodium-en-debian-10/</link>
+      <pubDate>Sat, 30 May 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/2020/05/30/instalando-vscodium-en-debian-10/</guid>
+      <description>&lt;p&gt;VSCodium es una una bifurcación del código de Visual Studio de Microsoft creada para que los desarrolladores no tengan que lidiar con la telemetría/rastreadores que tiene Visual Studio Code.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

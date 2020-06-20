@@ -1,0 +1,132 @@
+baseurl = "https://esaborit.github.io"
+DefaultContentLanguage = "es"
+#DefaultContentLanguage = "ja"
+title = "ESC"
+theme = "beautifulhugo"
+metaDataFormat = "yaml"
+
+#
+# Configuración de los bloques de código fuente
+# Guía en: https://gohugo.io/content-management/syntax-highlighting/
+#
+pygmentsStyle = "trac"
+pygmentsUseClasses = true
+pygmentsCodeFences = true
+pygmentsCodefencesGuessSyntax = true
+#pygmentsUseClassic = true
+#pygmentOptions = "linenos=inline"
+
+#
+# Configuración de los comentarios (Disqus)
+#
+#disqusShortname = "XXX"
+
+#
+# Configuración de las estadísticas (Google Analytics)
+#
+#googleAnalytics = "XXX"
+Paginate = 3 # Por defecto muestra 10 post
+
+[Params]
+#  homeTitle = "Beautiful Hugo Theme" # Set a different text for the header on the home page
+  subtitle = "Notas de un aprendiz de informático"
+  mainSections = ["post","posts"]
+  #logo = "img/avatar-icon2.png" # Expecting square dimensions
+  favicon = "img/favicon.ico"
+  dateFormat = "02-01-2006"
+  commit = false
+  rss = false
+  comments = true
+  readingTime = true
+  wordCount = true
+  useHLJS = true
+  #socialShare = true
+  delayDisqus = true
+  showRelatedPosts = true
+#  hideAuthor = true
+#  gcse = "012345678901234567890:abcdefghijk" # Get your code from google.com/cse. Make sure to go to "Look and Feel" and change Layout to "Full Width" and Theme to "Classic"
+
+#
+# Configuración del carrusel de imágenes de la página de inicio
+#
+[[Params.bigimg]]
+  src = "img/santanderb.jpg"
+  desc = "Playa del camello"
+#[[Params.bigimg]]
+#  src = "img/playa.jpg"
+#  desc = "Playa del camello"
+#[[Params.bigimg]]
+#  src = "img/sphere.jpg"
+#  desc = "Sphere"
+#  # position: see values of CSS background-position.
+#  position = "center top"
+#[[Params.bigimg]]
+#  src = "img/hexagon.jpg"
+#  desc = "Hexagon"
+
+[Author]
+  name = "Enrique Saborit Crespo"
+  website = "https://esaborit.github.io/"
+  #email = "youremail@domain.com"
+  github = "esaborit"
+  gitlab = "esaborit"
+  linkedin = "esaborit"
+  
+
+[[menu.main]]
+    name = "Inicio"
+    url = ""
+    weight = 1
+
+#[[menu.main]]
+#    name = "Acerca de"
+#    url = "page/about/"
+#    weight = 3
+
+[[menu.main]]
+    identifier = "menu"
+    name = "Contenidos"
+    weight = 2
+
+[[menu.main]]
+    parent = "menu"
+    name = "Temas"
+    url = "temas"
+    weight = 2
+
+[[menu.main]]
+    parent = "menu"
+    name = "Proyectos"
+    url = "proyectos"
+    weight = 3
+
+[[menu.main]]
+    parent = "menu"
+    name = "Categorias"
+    url = "categorias"
+    weight = 4
+
+#[[menu.main]]
+#    parent = "menu"
+#    name = "Code Sample"
+#    url = "2016/03/08/code-sample/"
+#    weight = 5
+
+
+
+#
+# Configuración de taxonomías
+#
+[taxonomies]
+  category = "categories"
+  tag      = "tags"
+  categoria = "categorias"
+  proyecto = "proyectos"
+  etiqueta = "etiquetas"
+  tema = "temas"
+
+  #
+# Configuración del permalink
+#
+[permalinks]
+  post = "/:year/:month/:day/:slug/"
