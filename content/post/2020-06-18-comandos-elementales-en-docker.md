@@ -11,7 +11,7 @@ proyectos: ["Servidor"]
 image: "/img/post/docker2.png"
 ---
 
-Tengo un pequeño ordenador con varios servidores (Web, SQL, VPN, Nextcloud) al que voy a cambiar el disco duro. Después de barajar las distintas opciones disponibles, he decidido instalar Debian 10 server en el que por facilidad de mantenimiento quiero virtualizar todos estos servicios. 
+Recojo en este breve post un pequeño listado de comandos docker para trabajar con imágenes y contenedores. 
 <!--more-->
 Habilitar Docker Repo, instalar e iniciar Docker
 

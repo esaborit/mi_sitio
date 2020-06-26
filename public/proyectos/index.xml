@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Proyectos on ESC</title>
+    <link>https://esaborit.github.io/proyectos/</link>
+    <description>Recent content in Proyectos on ESC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 25 Jun 2020 05:59:39 +0200</lastBuildDate>
+    
+	<atom:link href="https://esaborit.github.io/proyectos/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Servidor</title>
+      <link>https://esaborit.github.io/proyectos/servidor/</link>
+      <pubDate>Thu, 25 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/proyectos/servidor/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>blog-Hugo</title>
+      <link>https://esaborit.github.io/proyectos/blog-hugo/</link>
+      <pubDate>Tue, 02 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/proyectos/blog-hugo/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

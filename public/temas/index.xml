@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Temas on ESC</title>
+    <link>https://esaborit.github.io/temas/</link>
+    <description>Recent content in Temas on ESC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Thu, 25 Jun 2020 05:59:39 +0200</lastBuildDate>
+    
+	<atom:link href="https://esaborit.github.io/temas/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Docker</title>
+      <link>https://esaborit.github.io/temas/docker/</link>
+      <pubDate>Thu, 25 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/temas/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Let&#39;s Encrypt</title>
+      <link>https://esaborit.github.io/temas/lets-encrypt/</link>
+      <pubDate>Thu, 25 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/temas/lets-encrypt/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ngnix</title>
+      <link>https://esaborit.github.io/temas/ngnix/</link>
+      <pubDate>Thu, 25 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/temas/ngnix/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>WordPress</title>
+      <link>https://esaborit.github.io/temas/wordpress/</link>
+      <pubDate>Thu, 25 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/temas/wordpress/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Nextcloud</title>
+      <link>https://esaborit.github.io/temas/nextcloud/</link>
+      <pubDate>Wed, 17 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/temas/nextcloud/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Desarrollo Web</title>
+      <link>https://esaborit.github.io/temas/desarrollo-web/</link>
+      <pubDate>Fri, 12 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/temas/desarrollo-web/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Debian</title>
+      <link>https://esaborit.github.io/temas/debian/</link>
+      <pubDate>Wed, 10 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/temas/debian/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Git</title>
+      <link>https://esaborit.github.io/temas/git/</link>
+      <pubDate>Wed, 10 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/temas/git/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>GitKraken</title>
+      <link>https://esaborit.github.io/temas/gitkraken/</link>
+      <pubDate>Wed, 10 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/temas/gitkraken/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Hugo</title>
+      <link>https://esaborit.github.io/temas/hugo/</link>
+      <pubDate>Tue, 02 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/temas/hugo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VSCodium</title>
+      <link>https://esaborit.github.io/temas/vscodium/</link>
+      <pubDate>Sat, 30 May 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/temas/vscodium/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

@@ -25,7 +25,7 @@ pygmentsCodefencesGuessSyntax = true
 # Configuración de las estadísticas (Google Analytics)
 #
 #googleAnalytics = "XXX"
-Paginate = 3 # Por defecto muestra 10 post
+#Paginate = 3 # Por defecto muestra 10 post
 
 [Params]
 #  homeTitle = "Beautiful Hugo Theme" # Set a different text for the header on the home page

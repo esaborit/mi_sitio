@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Desarrollo Web on ESC</title>
+    <link>https://esaborit.github.io/temas/desarrollo-web/</link>
+    <description>Recent content in Desarrollo Web on ESC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 12 Jun 2020 05:59:39 +0200</lastBuildDate>
+    
+	<atom:link href="https://esaborit.github.io/temas/desarrollo-web/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Instalando Conky System Monitor y Conky Manager en Debian Buster</title>
+      <link>https://esaborit.github.io/2020/06/12/instalando-conky-manager-en-debian-buster/</link>
+      <pubDate>Fri, 12 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/2020/06/12/instalando-conky-manager-en-debian-buster/</guid>
+      <description>&lt;p&gt;Proceso de instalación del monitor de sistemas Conky  y la interface gráfica Conky Manager para manejar de una forma mas cómoda Conky.&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

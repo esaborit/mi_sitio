@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="es" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Docker en un servidor casero - ESC</title>
+  <meta name="description" content="Tengo un pequeño ordenador con varios servidores (Web, SQL, VPN, Nextcloud) al que voy a cambiar el disco duro. Después de barajar las distintas opciones disponibles, he decidido instalar Debian 10 server en el que por facilidad de mantenimiento quiero virtualizar todos estos servicios.">
+  <meta name="author" content="Enrique Saborit Crespo"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "ESC",
+    
+    "url": "https:\/\/esaborit.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/esaborit.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/esaborit.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/esaborit.github.io\/2020\/06\/17\/docker-en-un-servidor-casero\/",
+          "name": "Docker en un servidor casero"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Enrique Saborit Crespo"
+  },
+  "headline": "Docker en un servidor casero",
+  "description" : "Tengo un pequeño ordenador con varios servidores (Web, SQL, VPN, Nextcloud) al que voy a cambiar el disco duro. Después de barajar las distintas opciones disponibles, he decidido instalar Debian 10 server en el que por facilidad de mantenimiento quiero virtualizar todos estos servicios.\n",
+  "inLanguage" : "es",
+  "wordCount":  1746 ,
+  "datePublished" : "2020-06-17T05:59:39",
+  "dateModified" : "2020-06-17T05:59:39",
+  "image" : "https:\/\/esaborit.github.io",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "https:\/\/esaborit.github.io\/2020\/06\/17\/docker-en-un-servidor-casero\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/esaborit.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/esaborit.github.io",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Docker en un servidor casero" />
+<meta property="og:description" content="Tengo un pequeño ordenador con varios servidores (Web, SQL, VPN, Nextcloud) al que voy a cambiar el disco duro. Después de barajar las distintas opciones disponibles, he decidido instalar Debian 10 server en el que por facilidad de mantenimiento quiero virtualizar todos estos servicios.">
+<meta property="og:image" content="https://esaborit.github.io/img/post/servidor.jpg" />
+<meta property="og:url" content="https://esaborit.github.io/2020/06/17/docker-en-un-servidor-casero/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="ESC" />
+
+  <meta name="twitter:title" content="Docker en un servidor casero" />
+  <meta name="twitter:description" content="Tengo un pequeño ordenador con varios servidores (Web, SQL, VPN, Nextcloud) al que voy a cambiar el disco duro. Después de barajar las distintas opciones disponibles, he decidido instalar Debian 10 …">
+  <meta name="twitter:image" content="https://esaborit.github.io/img/post/servidor.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <link href='https://esaborit.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.73.0" />
+  <link rel="alternate" href="https://esaborit.github.io/index.xml" type="application/rss+xml" title="ESC"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://esaborit.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://esaborit.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://esaborit.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Conmuta navegación</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://esaborit.github.io">ESC</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Inicio" href="/">Inicio</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">Contenidos</a>
+              <div class="navlinks-children">
+                
+                  <a href="/temas">Temas</a>
+                
+                  <a href="/proyectos">Proyectos</a>
+                
+                  <a href="/categorias">Categorias</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 
+      
+         
+          data-img-src-1="/img/post/servidor.jpg" 
+         
+         data-img-desc-1="servidor casero"
+      ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>Docker en un servidor casero</h1>
+                  
+                  
+                    <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publicado el 17-06-2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;9&nbsp;minutos
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1746&nbsp;palabras
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Enrique Saborit Crespo
+    
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Docker en un servidor casero</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publicado el 17-06-2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;9&nbsp;minutos
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1746&nbsp;palabras
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Enrique Saborit Crespo
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <article role="main" class="blog-post">
+                <p>Tengo un pequeño ordenador con varios servidores (Web, SQL, VPN, Nextcloud) al que voy a cambiar el disco duro. Después de barajar las distintas opciones disponibles, he decidido instalar Debian 10 server en el que por facilidad de mantenimiento quiero virtualizar todos estos servicios.</p>
+<p>Para lo cual la opción que mejor se adapta a mis necesidades y conocimientos es utilizar Docker una tecnología de virtualización basada en contenedores. Lo primero de todo es instalar el sistema operativo, actualizarlo y configurar una cuenta de usuario con privilegios sudo.
+Después instalo Docker. Para ello voy a su <a href="https://docs.docker.com/engine/install/">página</a> y sigo las instrucciones dadas para sistemas Debian.</p>
+<h4 id="instalación-de-docker-en-debian-10-">Instalación de docker en Debian 10</h4>
+<p>Preparo el sistema operativo para la instalación de docker</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt update <span class="o">&amp;&amp;</span> sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
+</code></pre></div><p>Descargo la llave del Repositorio oficial, para configurar el Repositorio oficial y validar los archivos disponibles del mismo, con la versión de nuestra Distro GNU/Linux.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">curl -fsSL https://download.docker.com/linux/debian/gpg <span class="p">|</span> sudo apt-key add -
+sudo add-apt-repository <span class="s2">&#34;deb [arch=amd64] https://download.docker.com/linux/debian </span><span class="k">$(</span>lsb_release -cs<span class="k">)</span><span class="s2"> stable&#34;</span>
+sudo apt update <span class="o">&amp;&amp;</span> apt-cache policy docker-ce
+</code></pre></div><p>Instalo la aplicación y los archivos esenciales recomendados.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt install docker-ce docker-ce-cli containerd.io
+</code></pre></div><p>Valido instalación de la aplicación, ejecutando la instalación del contenedor de prueba llamado «hello-world».</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo docker run hello-world
+</code></pre></div><p>Compruebo la versión de la aplicación instalada.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">Docker -v
+</code></pre></div><p>Para permitir que un «usuario no administrador» pueda ejecutar un contenedor sin necesitar permisos de «usuario administrador»</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo adduser nombre_usuario docker
+docker run hello-world
+</code></pre></div><p>Por último, lo ideal antes de iniciar a usar por completo a Docker, es reiniciar y validar el arranque del Servicio y la ejecución del contenedor de prueba.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl <span class="nb">enable</span> docker
+sudo systemctl start docker
+docker run hello-world
+</code></pre></div><p>Compruebo que el servicio docker esta funcionando correctamente con el comando</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl status docker
+</code></pre></div><h4 id="creando-en-primer-contenedor-portainer-">Creando en primer contenedor: portainer</h4>
+<p>Ahora que ya tengo operativo el servicio docker puedo desde el cliente docker descargar las imágenes que voy a necesitar utilizar para crear los contenedores a partir de ellas. La primera imagen que descargaré será <code>portainer/portainer</code>. Mediante el comando <code>run</code> creo el contenedor que llamaré <code>portainer</code> y que escuchará en el puerto 9000 de mi servidor.
+Para instalar Portainer escribo desde la consola</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker run -d --name<span class="o">=</span>Portainer --restart<span class="o">=</span>always -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
+</code></pre></div><p>Este contenedor me va a permitir gestionar desde un entorno gráfico todas las imágenes y los contenedores que cree a partir de ellas. Para lo cual basta abrir un navegador web desde el equipo anfitrión y teclear <code>“ip-de-tu-servidor:9000”</code> para que se abra el panel de administración.
+Con Portainer instalado y el puerto abierto lo primero que hay que hacer es configurarlo, para ello escribo  <code>http://IP_Publica_servidor:9000</code> en la barra de direcciones y creo una contraseña para el usuario administrador, selecciono <code>“Local”</code> y conectaré con el contenedor Docker.  Capturas de todo este proceso:
+
+<link rel="stylesheet" href="https://esaborit.github.io/css/hugo-easy-gallery.css" />
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/post/portainer1.jpg" alt="/img/post/portainer1.jpg"/>
+    </div>
+    <a href="/img/post/portainer1.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+figura 1
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/post/portainer2.jpg" alt="/img/post/portainer2.jpg"/>
+    </div>
+    <a href="/img/post/portainer2.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+</p>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/post/portainer3.jpg" alt="/img/post/portainer3.jpg"/>
+    </div>
+    <a href="/img/post/portainer3.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<p>Instalado y configurado Portainer ya puedo crear los contenedores que quiera desde un entorno gráfico. Podré hacerlo de diferentes maneras “App Templates”, “Stacks” o “Images + Containers”. Aquí se pueden ver varias capturas con diferentes ejemplos:</p>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/post/portainer4.jpg" alt="/img/post/portainer4.jpg"/>
+    </div>
+    <a href="/img/post/portainer4.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<p>Posteriormente el login será como el de la imagen.</p>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/post/portainer5.jpg" alt="/img/post/portainer5.jpg"/>
+    </div>
+    <a href="/img/post/portainer5.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<h4 id="servidores-detrás-de-un-proxy-inverso-segurizado-con-lets-encrypt-">Servidores detrás de un proxy inverso segurizado con Let&rsquo;s Encrypt</h4>
+<p>Voy a utilizar las siguientes imágenes para crear mis contenedores:</p>
+<ul>
+<li>linuxserver/duckdns</li>
+<li>linuxserver/mariadb</li>
+<li>linuxserver/nextcloud</li>
+<li>linuxserver/letsencrypt</li>
+</ul>
+<p>Están disponibles en <a href="https://github.com/linuxserver">https://github.com/linuxserver</a>. Donde cada una de estas imágenes viene totalmente documentada para una correcta configuración.</p>
+<h4 id="red-puente-">Red Puente</h4>
+<p>Primero creo una red puente que albergará a los contenedores. Al crear esta red dentro de docker se activará el servidor DNS de que dispone docker y todos los contenedores que pertenezcan a la misma red se reconocerán mutuamente por su nombre. Si al crearla, no indico el tipo de red, esta será por defecto una red tipo puente.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker network create mi-red
+</code></pre></div><blockquote>
+<p>nota: Para que los nombres de contenedor se usen como nombres de host DNS en nginx, deben estar en minúsculas ya que nginx los convertirá a minúsculas antes de intentar resolverlos.</p>
+</blockquote>
+<h4 id="servicio-dns-gratuito-">Servicio DNS gratuito</h4>
+<p>Para poder acceder a mi servidor desde fuera de mi red NAT voy a utilizar mi subdominio gratuito de Duckdns y apuntar la ip dinámica de mi ISP a el. Como no, lo virtualizo también.</p>
+<p>Para eso creo un contenedor duckdns desde la línea de comando.</p>
+<blockquote>
+<p>Nota: como no me he descargado previamente la imagen linuxserver/duckdns, docker lo hará por mi. Para el resto de contenedores en este punto procederé del mismo modo.</p>
+</blockquote>
+<blockquote>
+<p>Nota importante: los contenedores que voy a crear a continuación mapean algunos directorios de mi servidor donde guardaré la información que será accesible (virtualhosts, db, log, etc) para ello debo  de indicar a cada contenedor la UID y GID del usuario que tiene privilegios sobre esos directorios. Lo que yo he hecho es crear un usuario en mi servidor que será el propietario de dichos directorios con todos los permisos y solo miembro de users.</p>
+</blockquote>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker create <span class="se">\
+</span><span class="se"></span>  --name<span class="o">=</span>duckdns <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">PUID</span><span class="o">=</span><span class="m">1000</span> <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">PGID</span><span class="o">=</span><span class="m">1000</span> <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">TZ</span><span class="o">=</span>Europe/Madrid <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">SUBDOMAINS</span><span class="o">=</span>subdomain1,subdomain2 <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">TOKEN</span><span class="o">=</span>escribea-qui-el-token-de-tu-cuenta-duckdns <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">LOG_FILE</span><span class="o">=</span><span class="nb">true</span> <span class="sb">`</span><span class="c1">#optional` \</span>
+  -v /path/to/appdata/config:/config <span class="sb">`</span><span class="c1">#optional` \</span>
+  --restart always <span class="se">\
+</span><span class="se"></span>  linuxserver/duckdns
+</code></pre></div><p>Para que empiece a funcionar el contenedor lo inicio con</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker start duckdns
+</code></pre></div><h4 id="servidor-de-bases-de-datos-mysql-">Servidor de bases de datos Mysql</h4>
+<p>Mi nube con NextCloud y mi servidor web necesitarán un servidor de bases de datos por lo que creo un contenedor con un SGBD MySQL con la imagen linuxserver/Mariadb y le indico los parámetros para crear el usuario y la BD necesarios para instalar Nextcloud</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker create <span class="se">\
+</span><span class="se"></span>  --name<span class="o">=</span>mariadb <span class="se">\
+</span><span class="se"></span>  --net<span class="o">=</span>mi-red <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">PUID</span><span class="o">=</span><span class="m">1000</span> <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">PGID</span><span class="o">=</span><span class="m">1000</span> <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">MYSQL_ROOT_PASSWORD</span><span class="o">=</span>kljfhpsfkjnbdsfpk <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">TZ</span><span class="o">=</span>Europe/Madrid <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">LANGUAGE</span><span class="o">=</span>es_ES.UTF-8 <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">MYSQL_DATABASE</span><span class="o">=</span>nextcloud_db <span class="sb">`</span><span class="c1">#optional` \</span>
+  -e <span class="nv">MYSQL_USER</span><span class="o">=</span>nextcloud <span class="sb">`</span><span class="c1">#optional` \</span>
+  -e <span class="nv">MYSQL_PASSWORD</span><span class="o">=</span>kjnifnfibj  <span class="sb">`</span><span class="c1">#optional` \</span>
+  -p 3306:3306 <span class="se">\
+</span><span class="se"></span>  -v /home/user/appdata/mariadb:/config <span class="se">\
+</span><span class="se"></span>  --restart always <span class="se">\
+</span><span class="se"></span>  linuxserver/mariadb
+</code></pre></div><p>Puedo iniciar el contenedor</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker starts mariadb
+</code></pre></div><p>y entrar en el para administrar las bases de datos con</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker <span class="nb">exec</span> -it mariadb bash
+</code></pre></div><p>Ahora ya puedo desde la linea de comando manejar el gestor de bases de datos</p>
+<h4 id="servidor-nextcloud-">Servidor Nextcloud</h4>
+<p>Una vez que he creado el contenedor con el nombre mariadb, creo otro contenedor para Nextcloud de la siguiente manera:</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker create <span class="se">\
+</span><span class="se"></span>  --name<span class="o">=</span>nextcloud <span class="se">\
+</span><span class="se"></span>  --net<span class="o">=</span>mi-red <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">PUID</span><span class="o">=</span><span class="m">1000</span> <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">PGID</span><span class="o">=</span><span class="m">1000</span> <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">TZ</span><span class="o">=</span>Europe/Madrid <span class="se">\
+</span><span class="se"></span>  -p 444:443 <span class="se">\
+</span><span class="se"></span>  -v /home/user/appdata/nextcloud/config:/config <span class="se">\
+</span><span class="se"></span>  -v /home/user/appdata/nextcloud/data:/data <span class="se">\
+</span><span class="se"></span>  --restart always <span class="se">\
+</span><span class="se"></span>  linuxserver/nextcloud
+</code></pre></div><p>No configuro Nextcloud ahora en local desde su “ip:444”, espero a instalar el siguiente contenedor con el servidor web y ponerlo detrás del proxy.</p>
+<h4 id="servidor-web-y-proxy-inverso-">Servidor web y proxy inverso</h4>
+<p>Llegó el momento de crear el contenedor con ngnix como proxy inverso y Let&rsquo;s Encrypt.  La validación de la propiedad de los subdominios en Let&rsquo;s Encrypt la haré con duckdns. Voy a solicitar un certificado comodín para subdominios secundarios.<br>
+La validación se realiza cuando el contenedor se inicia por primera vez. Nginx no estará activo hasta que los certificados SSL se generen con éxito.
+Los certificados son válidos por 90 días. El contenedor verificará el estado de vencimiento del certificado todas las noches y al llegar al último mes intentará renovarse automáticamente. Si quedasen menos de 30 días para la renovación de los certificados, indicaría que algo ha fallado y que debo revisar los registros en <code>/config/log/letsencrypt</code> para ver por qué fallaron las renovaciones automáticas.<br>
+Mapeo del puerto 443 para acceder a través <code>https://www.subdomain1.duckdns.org</code>. Sin embargo, no es necesario escuchar en el puerto 443 de servidor. Todo lo que se necesita es redireccionar el puerto 443 (red wan) del router al puerto 443 dentro del contenedor, entre ambos puede pasar por un puerto diferente en el servidor.<br>
+En mi caso, redirijo el puerto 443 en el router (wan) hacia el puerto 444 del servidor, y luego asigno este puerto 444 al puerto 443 en el contenedor .<br>
+El reenvío del puerto 80 solo se requiere para la validación http.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker create <span class="se">\
+</span><span class="se"></span>  --name<span class="o">=</span>letsencrypt <span class="se">\
+</span><span class="se"></span>  --cap-add<span class="o">=</span>NET_ADMIN <span class="se">\
+</span><span class="se"></span>  --net<span class="o">=</span>mi-red <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">PUID</span><span class="o">=</span><span class="m">1000</span> <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">PGID</span><span class="o">=</span><span class="m">1000</span> <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">TZ</span><span class="o">=</span>Europe/Madrid <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">URL</span><span class="o">=</span>subdominio1.duckdns.org <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">SUBDOMAINS</span><span class="o">=</span>wildcard <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">VALIDATION</span><span class="o">=</span>duckdns <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">DUCKDNSTOKEN</span><span class="o">=</span>escribe-aqui-el-token-de-tu-cuenta-duckdns  <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">EMAIL</span><span class="o">=</span>tuemail@gmail.com <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">DHLEVEL</span><span class="o">=</span><span class="m">2048</span> <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">ONLY_SUBDOMAINS</span><span class="o">=</span><span class="nb">false</span> <span class="se">\
+</span><span class="se"></span>  -e <span class="nv">EXTRA_DOMAINS</span><span class="o">=</span>extradomains <span class="sb">`</span><span class="c1">#optional` \</span>
+  -p 444:443 <span class="se">\
+</span><span class="se"></span>  -p 80:80 <span class="sb">`</span><span class="c1">#optional` \</span>
+  -v /srv/dev-disk-by-id-ata-KINGSTON-part6/appdata/letsencrypt:/config <span class="se">\
+</span><span class="se"></span>  --restart always <span class="se">\
+</span><span class="se"></span>  linuxserver/letsencrypt
+</code></pre></div><h4 id="alojamiento-sitio-web-estático-">Alojamiento sitio web estático.</h4>
+<p>Una vez que tengo un contenedor que funciona, puedo colocar mis documentos web y modificar los archivos de configuración nginx para configurar el servidor web.<br>
+Todos los archivos necesarios están debajo de los <code>/config</code>  que he mapeado en el servidor  <code>/home/user/appdata/letsencrypt</code>.
+Puedo colocar todos los archivos web-html en <code>/config/www</code>.<br>
+La configuración principal del sitio que utiliza nginx se puede encontrar en <code>/config/nginx/default</code>. No debo eliminar este archivo, ya que se regenerará al reiniciar el contenedor, pero puedo modificarlo. De forma predeterminada, está escuchando en el puerto 443, y la carpeta raíz está configurada en <code>/config/www</code>, por lo que si coloco un archivo <code>page1.html</code> en esa ubicación, estará accesible en <code>https://www.subdomain1.duckdns.org/page1.html</code>.
+Para habilitar la escucha en el puerto 80 y redirigir automáticamente al puerto 443 para aplicar SSL, ademas de haber mapeado el puerto 80, debería descomentar las líneas en la parte superior de la configuración por defecto del sitio para que se lea:</p>
+<div class="highlight"><pre class="chroma"><code class="language-html" data-lang="html"># redirect all traffic to https
+server {
+        listen 80;
+        listen [::]:80;
+        server_name _;
+        return 301 https://$host$request_uri;
+}
+</code></pre></div><p>Después de cualquier cambio en los archivos de configuración, simplemente reinicio el contenedor para volver a cargar la configuración de nginx.</p>
+<div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker restart letsencrypt
+</code></pre></div><h4 id="configuración-de-nextcloud-como-subdominio-">Configuración de nextcloud como subdominio</h4>
+<p>Busco en la carpeta mapeada <code>/config/nginx/proxy-confs</code> el archivo nombrado <code>nextcloud.subdomain.conf.sample</code>, le cambio el nombre a <code>nextcloud.subdomain.conf</code> y reinicio el contenedor letsencrypt. Acabo de situar al servidor de Nextcloud detrás del proxy que acabo de levantar con el contenedor letsencrypt.
+Como es la primera vez que accedo a Nextcloud (nunca antes lo he hecho localmente), simplemente navego hasta Nextcloud por detrás del proxy desde <code>https://nextcloud.subdomain1.duckdns.org</code> y veo la página de configuración de Nextcloud.</p>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/post/nextcloud.png" alt="/img/post/nextcloud.png"/>
+    </div>
+    <a href="/img/post/nextcloud.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+<p>Completo la información: creo un usuario <code>usuario1</code> con contraseña <code>micontraseña</code> y configuro la base de datos mariadb <code>nextcloud_db</code>. Uso el usuario <code>MYSQL_USER=nextcloud</code>, la contraseña que seleccioné en la variable de entorno <code>nextcloud</code> y <code>mariadb</code> como la dirección del host de la base de datos (nombre del contenedor como dns hostname). Entrando en nexcloud.</p>
+<p>Ahora, un usuario  con un navegador web puede conectarse a nuestro contenedor de letencrypt a través de https en el puerto 443, solicitar el servicio de Nexcloud, entonces el contenedor de letsencrypt se conectará al contenedor de Nextcloud, recuperará los datos y los pasará al cliente a través de https con nuestro certificado de confianza.<br>
+La conexión a Nextcloud es local y no necesita ser encriptada, pero toda la comunicación entre nuestro contenedor de letencrypt y el navegador del cliente estará encriptada.</p>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/post/nextcloud1.png" alt="/img/post/nextcloud1.png"/>
+    </div>
+    <a href="/img/post/nextcloud1.png" itemprop="contentUrl"></a>
+  </figure>
+</div>
+                <hr/>
+                <p class="post-meta">
+                    <span class="post-meta">
+                        
+                            <i class="fas fa-tags"></i> 
+                            <a href="https://esaborit.github.io/temas/nextcloud/">Nextcloud</a>&nbsp; 
+                            <a href="https://esaborit.github.io/temas/docker/">Docker</a>&nbsp; 
+                            <a href="https://esaborit.github.io/temas/ngnix/">Ngnix</a>&nbsp; 
+                            <a href="https://esaborit.github.io/temas/lets-encrypt/">Let&#39;s Encrypt</a>&nbsp;             
+                        
+                        
+                        
+                            &nbsp;|&nbsp;<i class="fas fa-tasks"></i> 
+                            <a href="https://esaborit.github.io/proyectos/servidor/" alt="Proyectos">Servidor</a>&nbsp;                 
+                            
+                    </span>
+                </p>
+                    
+            </article>
+
+            
+            <ul class="pager blog-pager">
+                
+                <li class="previous">
+                    <a href="https://esaborit.github.io/2020/06/12/instalando-conky-manager-en-debian-buster/" data-toggle="tooltip" data-placement="top" title="Instalando Conky System Monitor y Conky Manager en Debian Buster">&larr; Artículo anterior</a>
+                </li>
+                 
+                <li class="next">
+                    <a href="https://esaborit.github.io/2020/06/18/comandos-elementales-en-docker/" data-toggle="tooltip" data-placement="top" title="Comandos elementales en docker">Artículo siguiente &rarr;</a>
+                </li>
+                
+            </ul>
+                
+
+        </div>
+    </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/esaborit" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/esaborit" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/esaborit" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="https://esaborit.github.io/">Enrique Saborit Crespo</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://esaborit.github.io">ESC</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.73.0</a> alimentada &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptado de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://esaborit.github.io/js/main.js"></script>
+<script src="https://esaborit.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://esaborit.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+
