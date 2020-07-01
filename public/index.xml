@@ -5,10 +5,19 @@
     <link>https://esaborit.github.io/</link>
     <description>Recent content on ESC</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 25 Jun 2020 05:59:39 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2020 05:59:39 +0200</lastBuildDate>
     
 	<atom:link href="https://esaborit.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Openvpn-as en mi servidor casero</title>
+      <link>https://esaborit.github.io/2020/06/29/openvpn-as-en-mi-servidor-casero/</link>
+      <pubDate>Mon, 29 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/2020/06/29/openvpn-as-en-mi-servidor-casero/</guid>
+      <description>&lt;p&gt;Otra utilidad que quería darle a mi servidor casero era la de poder acceder a Internet de manera segura desde mi teléfono o desde mi portátil cuando estoy conectado a una red de la que no me fío, como la red wifi de un hotel o una cafetería. Por ello voy a crear una red privada virtual (VPN) que me permita navegar por redes no confiables de manera privada y segura, como si estuviera en mi red privada.&lt;/p&gt;</description>
+    </item>
     
     <item>
       <title>WordPress y linuxserver-letsencrypt</title>

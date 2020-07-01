@@ -5,7 +5,7 @@
     <link>https://esaborit.github.io/temas/</link>
     <description>Recent content in Temas on ESC</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 25 Jun 2020 05:59:39 +0200</lastBuildDate>
+    <lastBuildDate>Mon, 29 Jun 2020 05:59:39 +0200</lastBuildDate>
     
 	<atom:link href="https://esaborit.github.io/temas/index.xml" rel="self" type="application/rss+xml" />
     
@@ -13,9 +13,18 @@
     <item>
       <title>Docker</title>
       <link>https://esaborit.github.io/temas/docker/</link>
-      <pubDate>Thu, 25 Jun 2020 05:59:39 +0200</pubDate>
+      <pubDate>Mon, 29 Jun 2020 05:59:39 +0200</pubDate>
       
       <guid>https://esaborit.github.io/temas/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Openvpn-as</title>
+      <link>https://esaborit.github.io/temas/openvpn-as/</link>
+      <pubDate>Mon, 29 Jun 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/temas/openvpn-as/</guid>
       <description></description>
     </item>
     
