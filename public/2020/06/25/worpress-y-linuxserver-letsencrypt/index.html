@@ -59,7 +59,7 @@
   "headline": "WordPress y linuxserver-letsencrypt",
   "description" : "Después de instalar mi servidor web y el proxy inverso voy a crear un Server Blocks (virtualhost en Apache) en el servidor web Ngnix. En el alojaré un sitio web creado con WordPress al que accederé desde internet con el subominio de pruebas pruebas.misubdominio.duckdns.org que he creado.\n",
   "inLanguage" : "es",
-  "wordCount":  785 ,
+  "wordCount":  784 ,
   "datePublished" : "2020-06-25T05:59:39",
   "dateModified" : "2020-06-25T05:59:39",
   "image" : "https:\/\/esaborit.github.io",
@@ -90,7 +90,7 @@
   <meta name="twitter:image" content="https://esaborit.github.io/img/post/wordpress-linuxserver.png" />
   <meta name="twitter:card" content="summary" />
   <link href='https://esaborit.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.73.0" />
+  <meta name="generator" content="Hugo 0.75.1" />
   <link rel="alternate" href="https://esaborit.github.io/index.xml" type="application/rss+xml" title="ESC"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://esaborit.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -241,7 +241,7 @@
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutos
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;785&nbsp;palabras
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;784&nbsp;palabras
   
   
     
@@ -280,7 +280,7 @@
     &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutos
   
   
-    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;785&nbsp;palabras
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;784&nbsp;palabras
   
   
     
@@ -368,7 +368,7 @@ Query OK, <span class="m">0</span> rows affected <span class="o">(</span>0.003 s
 
 MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt; 
 </code></pre></div><p>Ya tengo creadas la base de datos y el usuario al que he dado todos los privilegios sobre la base de datos. Ahora abro el archivo wp-config.php del wordpress que he descomprimido y lo modifico con los datos de mi base de datos y usuario y lo dejo así:</p>
-<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="cp">&lt;?php</span>
+<div class="highlight"><pre class="chroma"><code class="language-php" data-lang="php"><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="sd">/**
 </span><span class="sd"> * Configuración básica de WordPress.
 </span><span class="sd"> *
@@ -430,8 +430,8 @@ MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt;
 </span><span class="sd"> * Emplea solo números, letras y guión bajo.
 </span><span class="sd"> */</span>
 <span class="nv">$table_prefix</span> <span class="o">=</span> <span class="s1">&#39;wordpress_&#39;</span><span class="p">;</span>
-<span class="cp">?&gt;</span>
-</code></pre></div><p>Lo guardo todo y abro la dirección <code>“https://pruebas.misubdominio.duckdns.org/wp-admin/install.php”</code> de mi subdominio para seguir con la instalación. Me aparecerá una ventana como la siguiente en la que debo rellenar el título del sitio, nombre de usuario y contraseña. La dirección de correo electrónico sirve como dirección de correo del usuario administrador que acabo de crear. Todos los mensajes e interacciones en  WordPress, llegarán a ese correo.</p>
+<span class="cp">?&gt;</span><span class="err">
+</span></code></pre></div><p>Lo guardo todo y abro la dirección <code>“https://pruebas.misubdominio.duckdns.org/wp-admin/install.php”</code> de mi subdominio para seguir con la instalación. Me aparecerá una ventana como la siguiente en la que debo rellenar el título del sitio, nombre de usuario y contraseña. La dirección de correo electrónico sirve como dirección de correo del usuario administrador que acabo de crear. Todos los mensajes e interacciones en  WordPress, llegarán a ese correo.</p>
 
 <link rel="stylesheet" href="https://esaborit.github.io/css/hugo-easy-gallery.css" />
 <div class="box" >
@@ -546,7 +546,7 @@ MariaDB <span class="o">[(</span>none<span class="o">)]</span>&gt;
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="https://gohugo.io">Hugo v0.73.0</a> alimentada &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptado de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          <a href="https://gohugo.io">Hugo v0.75.1</a> alimentada &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptado de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

@@ -4,8 +4,53 @@
   
   <url>
     <loc>https://esaborit.github.io/</loc>
-    <lastmod>2020-06-29T05:59:39+02:00</lastmod>
+    <lastmod>2020-08-14T05:59:39+02:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://esaborit.github.io/temas/autofirma/</loc>
+    <lastmod>2020-08-14T05:59:39+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://esaborit.github.io/temas/debian/</loc>
+    <lastmod>2020-08-14T05:59:39+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://esaborit.github.io/2020/08/14/instalacion-de-autofirma-en-debian-10-buster/</loc>
+    <lastmod>2020-08-14T05:59:39+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://esaborit.github.io/post/</loc>
+    <lastmod>2020-08-14T05:59:39+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://esaborit.github.io/proyectos/</loc>
+    <lastmod>2020-08-14T05:59:39+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://esaborit.github.io/temas/</loc>
+    <lastmod>2020-08-14T05:59:39+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://esaborit.github.io/proyectos/tr%C3%A1mites-administraci%C3%B3n/</loc>
+    <lastmod>2020-08-14T05:59:39+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://esaborit.github.io/temas/dnie/</loc>
+    <lastmod>2020-08-12T05:59:39+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://esaborit.github.io/2020/08/12/instalacion-de-dnie-en-debian-10-buster/</loc>
+    <lastmod>2020-08-12T05:59:39+02:00</lastmod>
   </url>
   
   <url>
@@ -24,22 +69,7 @@
   </url>
   
   <url>
-    <loc>https://esaborit.github.io/post/</loc>
-    <lastmod>2020-06-29T05:59:39+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://esaborit.github.io/proyectos/</loc>
-    <lastmod>2020-06-29T05:59:39+02:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://esaborit.github.io/proyectos/servidor/</loc>
-    <lastmod>2020-06-29T05:59:39+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://esaborit.github.io/temas/</loc>
     <lastmod>2020-06-29T05:59:39+02:00</lastmod>
   </url>
   
@@ -105,11 +135,6 @@
   
   <url>
     <loc>https://esaborit.github.io/categorias/</loc>
-    <lastmod>2020-06-10T05:59:39+02:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://esaborit.github.io/temas/debian/</loc>
     <lastmod>2020-06-10T05:59:39+02:00</lastmod>
   </url>
   

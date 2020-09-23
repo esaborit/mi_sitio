@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>DNIe on ESC</title>
+    <link>https://esaborit.github.io/temas/dnie/</link>
+    <description>Recent content in DNIe on ESC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Wed, 12 Aug 2020 05:59:39 +0200</lastBuildDate><atom:link href="https://esaborit.github.io/temas/dnie/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Instalación de DNI electrónico (DNIe) en Debian 10 Buster</title>
+      <link>https://esaborit.github.io/2020/08/12/instalacion-de-dnie-en-debian-10-buster/</link>
+      <pubDate>Wed, 12 Aug 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/2020/08/12/instalacion-de-dnie-en-debian-10-buster/</guid>
+      <description>&lt;p&gt;Para facilitar algunos de mis trámites con la administración pública, tanto local como estatal, voy a instalar un lector de DNIe en mi máquina con Debian Buster y los certificados de dicho documento en el navegador web Firefox 68.12.0esr (64-bit).&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

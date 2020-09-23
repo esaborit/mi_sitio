@@ -5,10 +5,33 @@
     <link>https://esaborit.github.io/temas/</link>
     <description>Recent content in Temas on ESC</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 29 Jun 2020 05:59:39 +0200</lastBuildDate>
+    <lastBuildDate>Fri, 14 Aug 2020 05:59:39 +0200</lastBuildDate><atom:link href="https://esaborit.github.io/temas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Autofirma</title>
+      <link>https://esaborit.github.io/temas/autofirma/</link>
+      <pubDate>Fri, 14 Aug 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/temas/autofirma/</guid>
+      <description></description>
+    </item>
     
-	<atom:link href="https://esaborit.github.io/temas/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Debian</title>
+      <link>https://esaborit.github.io/temas/debian/</link>
+      <pubDate>Fri, 14 Aug 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/temas/debian/</guid>
+      <description></description>
+    </item>
     
+    <item>
+      <title>DNIe</title>
+      <link>https://esaborit.github.io/temas/dnie/</link>
+      <pubDate>Wed, 12 Aug 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/temas/dnie/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>Docker</title>
@@ -70,15 +93,6 @@
       <pubDate>Fri, 12 Jun 2020 05:59:39 +0200</pubDate>
       
       <guid>https://esaborit.github.io/temas/desarrollo-web/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Debian</title>
-      <link>https://esaborit.github.io/temas/debian/</link>
-      <pubDate>Wed, 10 Jun 2020 05:59:39 +0200</pubDate>
-      
-      <guid>https://esaborit.github.io/temas/debian/</guid>
       <description></description>
     </item>
     

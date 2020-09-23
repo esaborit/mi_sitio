@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Trámites Administración on ESC</title>
+    <link>https://esaborit.github.io/proyectos/tr%C3%A1mites-administraci%C3%B3n/</link>
+    <description>Recent content in Trámites Administración on ESC</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Fri, 14 Aug 2020 05:59:39 +0200</lastBuildDate><atom:link href="https://esaborit.github.io/proyectos/tr%C3%A1mites-administraci%C3%B3n/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Instalación de Autofirma en Debian 10 Buster</title>
+      <link>https://esaborit.github.io/2020/08/14/instalacion-de-autofirma-en-debian-10-buster/</link>
+      <pubDate>Fri, 14 Aug 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/2020/08/14/instalacion-de-autofirma-en-debian-10-buster/</guid>
+      <description>&lt;p&gt;Otra herramienta útil  en la tramitación de documentación de manera telemática ante la administración es Autofirma.
+Según nos indican en la sede electrónicoa del gobierno de España.&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Autofirma es una aplicación de firma realizada por el Ministerio de Hacienda y Administraciones Públicas. Su principal objetivo es ofrecer al usuario un sistema de firma en el que éste pueda firmar cualquier tipo de documento de manera sencilla. El usuario indica qué fichero quiere firmar y la aplicación escoge automáticamente el formato de firma qué debe aplicar, liberando así, al usuario de cualquier duda técnica.&lt;/p&gt;
+&lt;/blockquote&gt;</description>
+    </item>
+    
+    <item>
+      <title>Instalación de DNI electrónico (DNIe) en Debian 10 Buster</title>
+      <link>https://esaborit.github.io/2020/08/12/instalacion-de-dnie-en-debian-10-buster/</link>
+      <pubDate>Wed, 12 Aug 2020 05:59:39 +0200</pubDate>
+      
+      <guid>https://esaborit.github.io/2020/08/12/instalacion-de-dnie-en-debian-10-buster/</guid>
+      <description>&lt;p&gt;Para facilitar algunos de mis trámites con la administración pública, tanto local como estatal, voy a instalar un lector de DNIe en mi máquina con Debian Buster y los certificados de dicho documento en el navegador web Firefox 68.12.0esr (64-bit).&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

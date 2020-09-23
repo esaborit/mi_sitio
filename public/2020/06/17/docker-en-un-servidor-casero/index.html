@@ -90,7 +90,7 @@
   <meta name="twitter:image" content="https://esaborit.github.io/img/post/servidor.jpg" />
   <meta name="twitter:card" content="summary" />
   <link href='https://esaborit.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.73.0" />
+  <meta name="generator" content="Hugo 0.75.1" />
   <link rel="alternate" href="https://esaborit.github.io/index.xml" type="application/rss+xml" title="ESC"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://esaborit.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -308,7 +308,7 @@
                 <p>Tengo un pequeño ordenador con varios servidores (Web, SQL, VPN, Nextcloud) al que voy a cambiar el disco duro. Después de barajar las distintas opciones disponibles, he decidido instalar Debian 10 server en el que por facilidad de mantenimiento quiero virtualizar todos estos servicios.</p>
 <p>Para lo cual la opción que mejor se adapta a mis necesidades y conocimientos es utilizar Docker una tecnología de virtualización basada en contenedores. Lo primero de todo es instalar el sistema operativo, actualizarlo y configurar una cuenta de usuario con privilegios sudo.
 Después instalo Docker. Para ello voy a su <a href="https://docs.docker.com/engine/install/">página</a> y sigo las instrucciones dadas para sistemas Debian.</p>
-<h4 id="instalación-de-docker-en-debian-10-">Instalación de docker en Debian 10</h4>
+<h4 id="instalación-de-docker-en-debian-10">Instalación de docker en Debian 10</h4>
 <p>Preparo el sistema operativo para la instalación de docker</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo apt update <span class="o">&amp;&amp;</span> sudo apt-get install apt-transport-https ca-certificates curl gnupg-agent software-properties-common
 </code></pre></div><p>Descargo la llave del Repositorio oficial, para configurar el Repositorio oficial y validar los archivos disponibles del mismo, con la versión de nuestra Distro GNU/Linux.</p>
@@ -330,7 +330,7 @@ sudo systemctl start docker
 docker run hello-world
 </code></pre></div><p>Compruebo que el servicio docker esta funcionando correctamente con el comando</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">sudo systemctl status docker
-</code></pre></div><h4 id="creando-en-primer-contenedor-portainer-">Creando en primer contenedor: portainer</h4>
+</code></pre></div><h4 id="creando-en-primer-contenedor-portainer">Creando en primer contenedor: portainer</h4>
 <p>Ahora que ya tengo operativo el servicio docker puedo desde el cliente docker descargar las imágenes que voy a necesitar utilizar para crear los contenedores a partir de ellas. La primera imagen que descargaré será <code>portainer/portainer</code>. Mediante el comando <code>run</code> creo el contenedor que llamaré <code>portainer</code> y que escuchará en el puerto 9000 de mi servidor.
 Para instalar Portainer escribo desde la consola</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker run -d --name<span class="o">=</span>Portainer --restart<span class="o">=</span>always -p 9000:9000 -v /var/run/docker.sock:/var/run/docker.sock portainer/portainer
@@ -394,7 +394,7 @@ figura 1
   </figure>
 </div>
 
-<h4 id="servidores-detrás-de-un-proxy-inverso-segurizado-con-lets-encrypt-">Servidores detrás de un proxy inverso segurizado con Let&rsquo;s Encrypt</h4>
+<h4 id="servidores-detrás-de-un-proxy-inverso-segurizado-con-lets-encrypt">Servidores detrás de un proxy inverso segurizado con Let&rsquo;s Encrypt</h4>
 <p>Voy a utilizar las siguientes imágenes para crear mis contenedores:</p>
 <ul>
 <li>linuxserver/duckdns</li>
@@ -403,13 +403,13 @@ figura 1
 <li>linuxserver/letsencrypt</li>
 </ul>
 <p>Están disponibles en <a href="https://github.com/linuxserver">https://github.com/linuxserver</a>. Donde cada una de estas imágenes viene totalmente documentada para una correcta configuración.</p>
-<h4 id="red-puente-">Red Puente</h4>
+<h4 id="red-puente">Red Puente</h4>
 <p>Primero creo una red puente que albergará a los contenedores. Al crear esta red dentro de docker se activará el servidor DNS de que dispone docker y todos los contenedores que pertenezcan a la misma red se reconocerán mutuamente por su nombre. Si al crearla, no indico el tipo de red, esta será por defecto una red tipo puente.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker network create mi-red
 </code></pre></div><blockquote>
 <p>nota: Para que los nombres de contenedor se usen como nombres de host DNS en nginx, deben estar en minúsculas ya que nginx los convertirá a minúsculas antes de intentar resolverlos.</p>
 </blockquote>
-<h4 id="servicio-dns-gratuito-">Servicio DNS gratuito</h4>
+<h4 id="servicio-dns-gratuito">Servicio DNS gratuito</h4>
 <p>Para poder acceder a mi servidor desde fuera de mi red NAT voy a utilizar mi subdominio gratuito de Duckdns y apuntar la ip dinámica de mi ISP a el. Como no, lo virtualizo también.</p>
 <p>Para eso creo un contenedor duckdns desde la línea de comando.</p>
 <blockquote>
@@ -431,7 +431,7 @@ figura 1
 </span><span class="se"></span>  linuxserver/duckdns
 </code></pre></div><p>Para que empiece a funcionar el contenedor lo inicio con</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker start duckdns
-</code></pre></div><h4 id="servidor-de-bases-de-datos-mysql-">Servidor de bases de datos Mysql</h4>
+</code></pre></div><h4 id="servidor-de-bases-de-datos-mysql">Servidor de bases de datos Mysql</h4>
 <p>Mi nube con NextCloud y mi servidor web necesitarán un servidor de bases de datos por lo que creo un contenedor con un SGBD MySQL con la imagen linuxserver/Mariadb y le indico los parámetros para crear el usuario y la BD necesarios para instalar Nextcloud</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker create <span class="se">\
 </span><span class="se"></span>  --name<span class="o">=</span>mariadb <span class="se">\
@@ -453,7 +453,7 @@ figura 1
 </code></pre></div><p>y entrar en el para administrar las bases de datos con</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker <span class="nb">exec</span> -it mariadb bash
 </code></pre></div><p>Ahora ya puedo desde la linea de comando manejar el gestor de bases de datos</p>
-<h4 id="servidor-nextcloud-">Servidor Nextcloud</h4>
+<h4 id="servidor-nextcloud">Servidor Nextcloud</h4>
 <p>Una vez que he creado el contenedor con el nombre mariadb, creo otro contenedor para Nextcloud de la siguiente manera:</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker create <span class="se">\
 </span><span class="se"></span>  --name<span class="o">=</span>nextcloud <span class="se">\
@@ -467,7 +467,7 @@ figura 1
 </span><span class="se"></span>  --restart always <span class="se">\
 </span><span class="se"></span>  linuxserver/nextcloud
 </code></pre></div><p>No configuro Nextcloud ahora en local desde su “ip:444”, espero a instalar el siguiente contenedor con el servidor web y ponerlo detrás del proxy.</p>
-<h4 id="servidor-web-y-proxy-inverso-">Servidor web y proxy inverso</h4>
+<h4 id="servidor-web-y-proxy-inverso">Servidor web y proxy inverso</h4>
 <p>Llegó el momento de crear el contenedor con ngnix como proxy inverso y Let&rsquo;s Encrypt.  La validación de la propiedad de los subdominios en Let&rsquo;s Encrypt la haré con duckdns. Voy a solicitar un certificado comodín para subdominios secundarios.<br>
 La validación se realiza cuando el contenedor se inicia por primera vez. Nginx no estará activo hasta que los certificados SSL se generen con éxito.
 Los certificados son válidos por 90 días. El contenedor verificará el estado de vencimiento del certificado todas las noches y al llegar al último mes intentará renovarse automáticamente. Si quedasen menos de 30 días para la renovación de los certificados, indicaría que algo ha fallado y que debo revisar los registros en <code>/config/log/letsencrypt</code> para ver por qué fallaron las renovaciones automáticas.<br>
@@ -494,7 +494,7 @@ El reenvío del puerto 80 solo se requiere para la validación http.</p>
   -v /srv/dev-disk-by-id-ata-KINGSTON-part6/appdata/letsencrypt:/config <span class="se">\
 </span><span class="se"></span>  --restart always <span class="se">\
 </span><span class="se"></span>  linuxserver/letsencrypt
-</code></pre></div><h4 id="alojamiento-sitio-web-estático-">Alojamiento sitio web estático.</h4>
+</code></pre></div><h4 id="alojamiento-sitio-web-estático">Alojamiento sitio web estático.</h4>
 <p>Una vez que tengo un contenedor que funciona, puedo colocar mis documentos web y modificar los archivos de configuración nginx para configurar el servidor web.<br>
 Todos los archivos necesarios están debajo de los <code>/config</code>  que he mapeado en el servidor  <code>/home/user/appdata/letsencrypt</code>.
 Puedo colocar todos los archivos web-html en <code>/config/www</code>.<br>
@@ -509,7 +509,7 @@ server {
 }
 </code></pre></div><p>Después de cualquier cambio en los archivos de configuración, simplemente reinicio el contenedor para volver a cargar la configuración de nginx.</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker restart letsencrypt
-</code></pre></div><h4 id="configuración-de-nextcloud-como-subdominio-">Configuración de nextcloud como subdominio</h4>
+</code></pre></div><h4 id="configuración-de-nextcloud-como-subdominio">Configuración de nextcloud como subdominio</h4>
 <p>Busco en la carpeta mapeada <code>/config/nginx/proxy-confs</code> el archivo nombrado <code>nextcloud.subdomain.conf.sample</code>, le cambio el nombre a <code>nextcloud.subdomain.conf</code> y reinicio el contenedor letsencrypt. Acabo de situar al servidor de Nextcloud detrás del proxy que acabo de levantar con el contenedor letsencrypt.
 Como es la primera vez que accedo a Nextcloud (nunca antes lo he hecho localmente), simplemente navego hasta Nextcloud por detrás del proxy desde <code>https://nextcloud.subdomain1.duckdns.org</code> y veo la página de configuración de Nextcloud.</p>
 
@@ -626,7 +626,7 @@ La conexión a Nextcloud es local y no necesita ser encriptada, pero toda la com
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="https://gohugo.io">Hugo v0.73.0</a> alimentada &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptado de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          <a href="https://gohugo.io">Hugo v0.75.1</a> alimentada &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptado de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>

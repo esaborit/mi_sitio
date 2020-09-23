@@ -5,11 +5,7 @@
     <link>https://esaborit.github.io/temas/wordpress/</link>
     <description>Recent content in WordPress on ESC</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Thu, 25 Jun 2020 05:59:39 +0200</lastBuildDate>
-    
-	<atom:link href="https://esaborit.github.io/temas/wordpress/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Thu, 25 Jun 2020 05:59:39 +0200</lastBuildDate><atom:link href="https://esaborit.github.io/temas/wordpress/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>WordPress y linuxserver-letsencrypt</title>
       <link>https://esaborit.github.io/2020/06/25/worpress-y-linuxserver-letsencrypt/</link>

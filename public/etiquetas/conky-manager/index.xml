@@ -5,11 +5,7 @@
     <link>https://esaborit.github.io/etiquetas/conky-manager/</link>
     <description>Recent content in Conky Manager on ESC</description>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Fri, 12 Jun 2020 05:59:39 +0200</lastBuildDate>
-    
-	<atom:link href="https://esaborit.github.io/etiquetas/conky-manager/index.xml" rel="self" type="application/rss+xml" />
-    
-    
+    <lastBuildDate>Fri, 12 Jun 2020 05:59:39 +0200</lastBuildDate><atom:link href="https://esaborit.github.io/etiquetas/conky-manager/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Instalando Conky System Monitor y Conky Manager en Debian Buster</title>
       <link>https://esaborit.github.io/2020/06/12/instalando-conky-manager-en-debian-buster/</link>

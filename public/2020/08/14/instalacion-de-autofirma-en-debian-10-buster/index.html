@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="es" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Instalación de Autofirma en Debian 10 Buster - ESC</title>
+  <meta name="description" content="Otra herramienta útil  en la tramitación de documentación de manera telemática ante la administración es Autofirma.
+Según nos indican en la sede electrónicoa del gobierno de España.
+
+Autofirma es una aplicación de firma realizada por el Ministerio de Hacienda y Administraciones Públicas. Su principal objetivo es ofrecer al usuario un sistema de firma en el que éste pueda firmar cualquier tipo de documento de manera sencilla. El usuario indica qué fichero quiere firmar y la aplicación escoge automáticamente el formato de firma qué debe aplicar, liberando así, al usuario de cualquier duda técnica.
+">
+  <meta name="author" content="Enrique Saborit Crespo"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "ESC",
+    
+    "url": "https:\/\/esaborit.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/esaborit.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/esaborit.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/esaborit.github.io\/2020\/08\/14\/instalacion-de-autofirma-en-debian-10-buster\/",
+          "name": "Instalación de autofirma en debian 10 buster"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Enrique Saborit Crespo"
+  },
+  "headline": "Instalación de Autofirma en Debian 10 Buster",
+  "description" : "Otra herramienta útil en la tramitación de documentación de manera telemática ante la administración es Autofirma. Según nos indican en la sede electrónicoa del gobierno de España.\n Autofirma es una aplicación de firma realizada por el Ministerio de Hacienda y Administraciones Públicas. Su principal objetivo es ofrecer al usuario un sistema de firma en el que éste pueda firmar cualquier tipo de documento de manera sencilla. El usuario indica qué fichero quiere firmar y la aplicación escoge automáticamente el formato de firma qué debe aplicar, liberando así, al usuario de cualquier duda técnica.\n",
+  "inLanguage" : "es",
+  "wordCount":  1509 ,
+  "datePublished" : "2020-08-14T05:59:39",
+  "dateModified" : "2020-08-14T05:59:39",
+  "image" : "https:\/\/esaborit.github.io",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "https:\/\/esaborit.github.io\/2020\/08\/14\/instalacion-de-autofirma-en-debian-10-buster\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/esaborit.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/esaborit.github.io",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Instalación de Autofirma en Debian 10 Buster" />
+<meta property="og:description" content="Otra herramienta útil  en la tramitación de documentación de manera telemática ante la administración es Autofirma.
+Según nos indican en la sede electrónicoa del gobierno de España.
+
+Autofirma es una aplicación de firma realizada por el Ministerio de Hacienda y Administraciones Públicas. Su principal objetivo es ofrecer al usuario un sistema de firma en el que éste pueda firmar cualquier tipo de documento de manera sencilla. El usuario indica qué fichero quiere firmar y la aplicación escoge automáticamente el formato de firma qué debe aplicar, liberando así, al usuario de cualquier duda técnica.
+">
+<meta property="og:image" content="https://esaborit.github.io/img/post/autofirma.jpg" />
+<meta property="og:url" content="https://esaborit.github.io/2020/08/14/instalacion-de-autofirma-en-debian-10-buster/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="ESC" />
+
+  <meta name="twitter:title" content="Instalación de Autofirma en Debian 10 Buster" />
+  <meta name="twitter:description" content="Otra herramienta útil  en la tramitación de documentación de manera telemática ante la administración es Autofirma.
+Según nos indican en la sede electrónicoa del gobierno de España.
+
+Autofirma es una …">
+  <meta name="twitter:image" content="https://esaborit.github.io/img/post/autofirma.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <link href='https://esaborit.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.75.1" />
+  <link rel="alternate" href="https://esaborit.github.io/index.xml" type="application/rss+xml" title="ESC"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://esaborit.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://esaborit.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://esaborit.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Conmuta navegación</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://esaborit.github.io">ESC</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Inicio" href="/">Inicio</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">Contenidos</a>
+              <div class="navlinks-children">
+                
+                  <a href="/temas">Temas</a>
+                
+                  <a href="/proyectos">Proyectos</a>
+                
+                  <a href="/categorias">Categorias</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 
+      
+         
+          data-img-src-1="/img/post/autofirma.jpg" 
+         
+         
+      ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>Instalación de Autofirma en Debian 10 Buster</h1>
+                  
+                  
+                    <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publicado el 14-08-2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;8&nbsp;minutos
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1509&nbsp;palabras
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Enrique Saborit Crespo
+    
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Instalación de Autofirma en Debian 10 Buster</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publicado el 14-08-2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;8&nbsp;minutos
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;1509&nbsp;palabras
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Enrique Saborit Crespo
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <article role="main" class="blog-post">
+                <p>Otra herramienta útil  en la tramitación de documentación de manera telemática ante la administración es Autofirma.
+Según nos indican en la sede electrónicoa del gobierno de España.</p>
+<blockquote>
+<p>Autofirma es una aplicación de firma realizada por el Ministerio de Hacienda y Administraciones Públicas. Su principal objetivo es ofrecer al usuario un sistema de firma en el que éste pueda firmar cualquier tipo de documento de manera sencilla. El usuario indica qué fichero quiere firmar y la aplicación escoge automáticamente el formato de firma qué debe aplicar, liberando así, al usuario de cualquier duda técnica.</p>
+</blockquote>
+<p> </p>
+<h3 id="requisitos-técnicos-previos">Requisitos técnicos previos</h3>
+<p>En Linux para poder realizar el envío telemático usando un certificado o firma electrónica es necesario que se cumplan los siguientes requisitos:</p>
+<ul>
+<li>
+<p>Tener instalado en el ordenador un certificado digital válido y aprobado por el Ministerio (por ejemplo: certificado del DNIe o un certificado en tarjeta de la FNMT).</p>
+</li>
+<li>
+<p>Tener instalado en el ordenador desde el que se quiere realizar el proceso de firma una versión válida de la máquina virtual de Java. En Linux se necesita un entorno de ejecución de Java 8 de Oracle u OpenJDK 8 mínimo (marcado como dependencia en el instalador integrado de AutoFirma).</p>
+</li>
+<li>
+<p>Mozilla Firefox 41.0.1 o superior.</p>
+<blockquote>
+<p>Nota: Se ha detectado una incompatibilidad entre la aplicación &ldquo;Autofirma&rdquo; y la última versión de navegador web &ldquo;Mozilla Firefox 71&rdquo; que impide la realización de firmas electrónicas.
+El problema afecta a los sistemas operativos Windows y Linux. Se recomienda no actualizar a esta versión del navegador.&quot;</p>
+</blockquote>
+</li>
+<li>
+<p>Biblioteca “libnss3-tools”.</p>
+</li>
+</ul>
+<p> </p>
+<h3 id="instalando-autofirma">Instalando Autofirma</h3>
+<p>Antes de instalar el paquete deb de autofirma debo cumplir los requerimientos mínimos anteriormente mencionados, para que en el momento en que la aplicación haga contacto con el navegador Firefox no ocurra ningún tipo de error que entorpezca luego la correcta instalación.
+Como requisito ineludible, la instalación de AutoFirma en Linux debe ser realizada por un usuario con permisos de administrador, así que me logeo como tal y aprovecho para instalar las dependencias (OpenJDK y biblioteca NSS Tools) que requiere para su correcto funcionamiento.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">root@asuspc:~#  apt-get install libnss3-tools
+root@asuspc:~#  apt install default-jre
+</code></pre></div><p>Compruebo la versión de java</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">root@asuspc:~# java -version
+openjdk version &#34;11.0.8&#34; 2020-07-14
+OpenJDK Runtime Environment (build 11.0.8+10-post-Debian-1deb10u1)
+OpenJDK 64-Bit Server VM (build 11.0.8+10-post-Debian-1deb10u1, mixed mode, sharing)
+root@asuspc:~#
+</code></pre></div><p>Creo una carpeta donde descargo temporalmente el zip de Autofirma y lo descomprimo.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">root@asuspc:~# mkdir tmp_autofirma
+root@asuspc:~# cd tmp_autofirma
+root@asuspc:~#  wget https://estaticos.redsara.es/comunes/autofirma/currentversion/AutoFirma_Linux.zip
+root@asuspc:~# unzip AutoFirma_Linux.zip
+Archive:  AutoFirma_Linux.zip
+  inflating: AF_manual_instalacion_usuarios_ES.pdf  
+ extracting: autofirma-1.6.5-1.noarch.rpm  
+ extracting: AutoFirma_1_6_5.deb     
+  inflating: autofirma-1.6.5-1.noarch_SUSE.rpm
+</code></pre></div><p>Procedo a instalar Autofirma.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">root@asuspc:~# dpkg -i AutoFirma_1_6_5.deb
+</code></pre></div><p>El proceso de instalación creará la CA de Autofirma y la instalará en los navegadores Firefox, Chrome y Chromium. Los navegadores deben estar previamente instalados, en caso de instalarse posteriormente al proceso de instalación de Autofirma sería necesario instalar de forma manual el certificado de confianza, o bien ejecutar de nuevo la instalación de Autofirma.</p>
+<p> 
+
+<link rel="stylesheet" href="https://esaborit.github.io/css/hugo-easy-gallery.css" />
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/post/autofirma3.jpg" alt="/img/post/autofirma3.jpg"/>
+    </div>
+    <a href="/img/post/autofirma3.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+</p>
+<p> 
+El funcionamiento de AutoFirma está verificado en distribuciones Ubuntu, Fedora y OpenSuse. Una vez instalada, puede usarse como aplicación de escritorio e invocarse desde los navegadores web Mozilla Firefox y Google Chrome.</p>
+<blockquote>
+<p>Hay dos opciones de instalación: por línea de comandos y desde la interfaz de escritorio.
+La instalación por ambos medios dejará la aplicación instalada por defecto en el directorio:
+<code>/usr/lib/AutoFirma</code>.</p>
+</blockquote>
+<p>Una vez finalizada la instalación y comprobado que funciona correctamente, borro el directorio temporal.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">root@asuspc:~# cd ..
+root@asuspc:~# rm tmp_autofirma
+</code></pre></div><p>Para desinstalar Autofirma se puede hacer.</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">root@asuspc:~# apt-get remove –-purge autofirma
+</code></pre></div><p> </p>
+<h3 id="uso-de-dnie-y-tarjetas-inteligentes-de-la-fnmt">Uso de DNIe y tarjetas inteligentes de la FNMT</h3>
+<p>AutoFirma comprueba al abrirse si existen lectores de tarjeta inteligente instalados en el sistema. Si los detecta, muestra al usuario una pantalla para que seleccione si desea “Firmar con DNIe” o “Usar cualquier certificado”. Tanto si se selecciona “Firmar con DNIe” como si se selecciona “Usar cualquier certificado” y luego se selecciona el certificado del DNIe o un certificado en tarjeta de la FNMT, AutoFirma hará uso del certificado mediante un controlador propio integrado en la propia aplicación. Este controlador es JMulticard y permite utilizar los certificados alojados en este tipo de tarjetas aun cuando no se tiene instalado su controlador oficial (CSP o PKCS#11) en el equipo.</p>
+<p>JMulticard pedirá el PIN de las tarjetas que lo requieran para acceder al listado de certificados que contienen. También pedirá el PIN cada vez que se desee utilizar para firmar cualquiera de estos certificados. Esto puede suponer un inconveniente si queremos firmar múltiples documentos seguidos. Este comportamiento puede no darse con los controladores oficiales de las tarjetas que  mantienen habilitado el permiso de firma después de la primera, evitando que sea necesario volver a introducir el PIN.</p>
+<p>Si no desea utilizar JMulticard cuando seleccione el uso de cualquier certificado, puede deshabilitar su uso desde el menú de preferencias de AutoFirma. Acceda a la aplicación, selecciones el menú “Herramientas” y la opción “Preferencias”. En la pestaña “General” se muestra la opción “Habilitar JMulticard para el uso de las tarjetas de la FNMT y DNIe”. Esta opción estará habilitada por defecto y deberá desactivarla para que se use el controlador oficial de su tarjeta. Después de desactivar esta opción, deberá pulsar Aceptar en el panel. La próxima vez que abra AutoFirma, se cargará el controlador oficial de su tarjeta en lugar de Jmulticard.</p>
+<p> 
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/post/autofirma1.jpg" alt="/img/post/autofirma1.jpg"/>
+    </div>
+    <a href="/img/post/autofirma1.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+</p>
+<p> </p>
+<h3 id="posibles-problemas">Posibles problemas</h3>
+<ol>
+<li><strong>Al instalar AutoFirma falla la instalación de los certificados de confianza SSL.</strong><br>
+AutoFirma requiere permisos de administrador para ser instalado y para insertar el certificado de confianza SSL para el funcionamiento de la firma en los trámites online. Si no puede instalar AutoFirma o el certificado de confianza, solicite al administrador de su sistema que realice la instalación de la aplicación.<br>
+ </li>
+<li><strong>Al abrir Google Chrome después del proceso de instalación de AutoFirma se muestra un mensaje notificando que la configuración de la aplicación está corrupta.</strong><br>
+El navegador Google Chrome incluye en su configuración un listado de protocolos que considera seguros para la llamada a aplicaciones externas. Durante el proceso de instalación de AutoFirma se registra el protocolo “afirma” en este listado seguro de Chrome para que las invocaciones desde el navegador se realicen correctamente.
+En algunas situaciones en las que el instalador podría no poder completar el proceso de registro, el fichero de configuración de Chrome podría quedar en un estado inconsistente. En estos casos, al iniciarse de nuevo el navegador, detectará el problema y anunciará al usuario esta corrupción de datos mediante una ventana de advertencia que nos permitirá restaurar las propiedades por defecto.
+Seguidamente, el navegador restaurará las propiedades de configuración y volverá a funcionar normalmente. En este caso, el usuario recibirá mensajes de advertencia al usar AutoFirma desde Chrome para realizar firmas, aunque esto no impedirá que funcione normalmente.
+Durante el proceso de desinstalación de AutoFirma se realiza el proceso inverso al de instalación y se elimina el protocolo “afirma” del listado de protocolos seguros registrados en Chrome. Este proceso podría derivar en algunas circunstancias a la misma corrupción de la configuración del navegador.<br>
+ </li>
+<li><strong>Cuando se instala Mozilla Firefox o se crea un nuevo perfil de usuario después de la instalación de AutoFirma, este no funciona en Firefox.</strong><br>
+Durante el proceso de instalación de AutoFirma se genera un certificado para la comunicación entre la página web y la aplicación, y lo instala en los almacenes de confianza del sistema y de Firefox. Si se crea un perfil de usuario de Firefox o se instala el propio Firefox después de la instalación de AutoFirma, este no contará con el certificado entre los que considera de confianza. Para resolver este problema deberá desinstalar AutoFirma y volverlo a instalar. Tenga en cuenta, sin embargo, que esto implicará que se pierda la configuración personalizada establecida en AutoFirma.<br>
+ </li>
+<li><strong>AutoFirma indica que un documento PDF es demasiado grande cuando se intenta firmar con firma visible.</strong><br>
+Cuando AutoFirma crea la previsualización de un documento PDF, lo carga en memoria y crea miniaturas de cada una de sus páginas. Esta tarea requiere una gran cantidad de memoria y es posible que no pueda completarse porque la aplicación no pueda reservar suficiente. Este problema suele darse con documentos PDF de gran tamaño o con un gran número de páginas. La probabilidad aumenta considerablemente en equipos con instalaciones de 32bits de AutoFirma, ya que no permiten reservar toda la memoria necesaria. También puede ocurrir en equipos con 2Gb de memoria o menos.
+Se recomienda que los usuarios de sistemas operativos de 64bits utilicen AutoFirma de 64bits para reducir la probabilidad de sufrir este error.<br>
+ </li>
+<li><strong>AutoFirma se cierra inmediatamente tras ser invocado desde el navegador web.</strong><br>
+Cuando se abre AutoFirma por petición de un navegador web inmediatamente se abre una conexión entre ambas aplicaciones. Si AutoFirma detecta cualquier problema que evita que se pueda establecer esa comunicación, se cierra. Esto dará lugar a que, pasado un tiempo, la página web que intentó realizar la operación de firma informe de que no se pudo conectar con AutoFirma.
+Si se encuentra en esta situación, utilice la función de “Restaurar instalación” de AutoFirma. Esta función permitirá reestablecer la configuración y los recursos necesarios para que se pueda establecer la comunicación entre el navegador y AutoFirma.
+La función de “Restauración instalación” se encuentra disponible en el menú de herramientas de AutoFirma.</li>
+</ol>
+<p> </p>
+                <hr/>
+                <p class="post-meta">
+                    <span class="post-meta">
+                        
+                            <i class="fas fa-tags"></i> 
+                            <a href="https://esaborit.github.io/temas/debian/">Debian</a>&nbsp; 
+                            <a href="https://esaborit.github.io/temas/autofirma/">Autofirma</a>&nbsp;             
+                        
+                        
+                        
+                            &nbsp;|&nbsp;<i class="fas fa-tasks"></i> 
+                            <a href="https://esaborit.github.io/proyectos/tr%C3%A1mites-administraci%C3%B3n/" alt="Proyectos">Trámites Administración</a>&nbsp;                 
+                            
+                    </span>
+                </p>
+                    
+            </article>
+
+            
+            <ul class="pager blog-pager">
+                
+                <li class="previous">
+                    <a href="https://esaborit.github.io/2020/08/12/instalacion-de-dnie-en-debian-10-buster/" data-toggle="tooltip" data-placement="top" title="Instalación de DNI electrónico (DNIe) en Debian 10 Buster">&larr; Artículo anterior</a>
+                </li>
+                 
+            </ul>
+                
+
+        </div>
+    </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/esaborit" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/esaborit" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/esaborit" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="https://esaborit.github.io/">Enrique Saborit Crespo</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://esaborit.github.io">ESC</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.75.1</a> alimentada &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptado de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://esaborit.github.io/js/main.js"></script>
+<script src="https://esaborit.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://esaborit.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

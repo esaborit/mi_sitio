@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="es" itemscope itemtype="http://schema.org/WebPage">
+  <head>
+    
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+
+  <title>Instalación de DNI electrónico (DNIe) en Debian 10 Buster - ESC</title>
+  <meta name="description" content="Para facilitar algunos de mis trámites con la administración pública, tanto local como estatal, voy a instalar un lector de DNIe en mi máquina con Debian Buster y los certificados de dicho documento en el navegador web Firefox 68.12.0esr (64-bit).">
+  <meta name="author" content="Enrique Saborit Crespo"/><script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "@type": "WebSite",
+    "name": "ESC",
+    
+    "url": "https:\/\/esaborit.github.io"
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Organization",
+  "name": "",
+  "url": "https:\/\/esaborit.github.io"
+  
+  
+  
+  
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [{
+        "@type": "ListItem",
+        "position": 1,
+        "item": {
+          "@id": "https:\/\/esaborit.github.io",
+          "name": "home"
+        }
+    },{
+        "@type": "ListItem",
+        "position": 3,
+        "item": {
+          "@id": "https:\/\/esaborit.github.io\/2020\/08\/12\/instalacion-de-dnie-en-debian-10-buster\/",
+          "name": "Instalación de d n i electrónico ( d n ie) en debian 10 buster"
+        }
+    }]
+}
+</script><script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "Article",
+  "author": {
+    "name" : "Enrique Saborit Crespo"
+  },
+  "headline": "Instalación de DNI electrónico (DNIe) en Debian 10 Buster",
+  "description" : "Para facilitar algunos de mis trámites con la administración pública, tanto local como estatal, voy a instalar un lector de DNIe en mi máquina con Debian Buster y los certificados de dicho documento en el navegador web Firefox 68.12.0esr (64-bit).\n",
+  "inLanguage" : "es",
+  "wordCount":  655 ,
+  "datePublished" : "2020-08-12T05:59:39",
+  "dateModified" : "2020-08-12T05:59:39",
+  "image" : "https:\/\/esaborit.github.io",
+  "keywords" : [ "" ],
+  "mainEntityOfPage" : "https:\/\/esaborit.github.io\/2020\/08\/12\/instalacion-de-dnie-en-debian-10-buster\/",
+  "publisher" : {
+    "@type": "Organization",
+    "name" : "https:\/\/esaborit.github.io",
+    "logo" : {
+        "@type" : "ImageObject",
+        "url" : "https:\/\/esaborit.github.io",
+        "height" :  60 ,
+        "width" :  60
+    }
+  }
+}
+</script>
+
+<meta property="og:title" content="Instalación de DNI electrónico (DNIe) en Debian 10 Buster" />
+<meta property="og:description" content="Para facilitar algunos de mis trámites con la administración pública, tanto local como estatal, voy a instalar un lector de DNIe en mi máquina con Debian Buster y los certificados de dicho documento en el navegador web Firefox 68.12.0esr (64-bit).">
+<meta property="og:image" content="https://esaborit.github.io/img/post/dnie3.jpg" />
+<meta property="og:url" content="https://esaborit.github.io/2020/08/12/instalacion-de-dnie-en-debian-10-buster/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="ESC" />
+
+  <meta name="twitter:title" content="Instalación de DNI electrónico (DNIe) en Debian 10 Buster" />
+  <meta name="twitter:description" content="Para facilitar algunos de mis trámites con la administración pública, tanto local como estatal, voy a instalar un lector de DNIe en mi máquina con Debian Buster y los certificados de dicho documento …">
+  <meta name="twitter:image" content="https://esaborit.github.io/img/post/dnie3.jpg" />
+  <meta name="twitter:card" content="summary" />
+  <link href='https://esaborit.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
+  <meta name="generator" content="Hugo 0.75.1" />
+  <link rel="alternate" href="https://esaborit.github.io/index.xml" type="application/rss+xml" title="ESC"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://esaborit.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" />
+  <link rel="stylesheet" href="https://esaborit.github.io/css/highlight.min.css" /><link rel="stylesheet" href="https://esaborit.github.io/css/codeblock.css" /><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.css" integrity="sha384-h/L2W9KefUClHWaty3SLE5F/qvc4djlyR4qY3NUV5HGQBBW7stbcfff1+I/vmsHh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/default-skin/default-skin.min.css" integrity="sha384-iD0dNku6PYSIQLyfTOpB06F2KCZJAKLOThS5HRe8b3ibhdEQ6eKsFf/EeFxdOt5R" crossorigin="anonymous">
+
+
+
+
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-custom">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#main-navbar">
+        <span class="sr-only">Conmuta navegación</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="https://esaborit.github.io">ESC</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="main-navbar">
+      <ul class="nav navbar-nav navbar-right">
+        
+          
+            <li>
+              <a title="Inicio" href="/">Inicio</a>
+            </li>
+          
+        
+          
+            <li class="navlinks-container">
+              <a class="navlinks-parent">Contenidos</a>
+              <div class="navlinks-children">
+                
+                  <a href="/temas">Temas</a>
+                
+                  <a href="/proyectos">Proyectos</a>
+                
+                  <a href="/categorias">Categorias</a>
+                
+              </div>
+            </li>
+          
+        
+
+        
+
+        
+      </ul>
+    </div>
+
+    
+
+  </div>
+</nav>
+
+
+
+
+    
+
+
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+<div class="pswp__bg"></div>
+
+<div class="pswp__scroll-wrap">
+    
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    
+    <div class="pswp__ui pswp__ui--hidden">
+    <div class="pswp__top-bar">
+      
+      <div class="pswp__counter"></div>
+      <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+      <button class="pswp__button pswp__button--share" title="Share"></button>
+      <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+      <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+      
+      
+      <div class="pswp__preloader">
+        <div class="pswp__preloader__icn">
+          <div class="pswp__preloader__cut">
+            <div class="pswp__preloader__donut"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+      <div class="pswp__share-tooltip"></div>
+    </div>
+    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+    </button>
+    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+    </button>
+    <div class="pswp__caption">
+      <div class="pswp__caption__center"></div>
+    </div>
+    </div>
+    </div>
+</div>
+
+
+  
+  
+  
+
+
+
+
+
+
+  
+    <div id="header-big-imgs" data-num-img=1 
+      
+         
+          data-img-src-1="/img/post/dnie3.jpg" 
+         
+         
+      ></div>
+  
+
+  <header class="header-section has-img">
+    
+      <div class="intro-header big-img">
+        
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+              <div class="post-heading">
+                <h1>Instalación de DNI electrónico (DNIe) en Debian 10 Buster</h1>
+                  
+                  
+                    <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publicado el 12-08-2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutos
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;655&nbsp;palabras
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Enrique Saborit Crespo
+    
+  
+  
+</span>
+
+
+                  
+              </div>
+            </div>
+          </div>
+        </div>
+        <span class="img-desc" style="display: inline;"></span>
+      </div>
+    
+    <div class="intro-header no-img">
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              
+                <h1>Instalación de DNI electrónico (DNIe) en Debian 10 Buster</h1>
+              
+              
+              
+              
+                <span class="post-meta">
+  
+  
+  <i class="fas fa-calendar"></i>&nbsp;Publicado el 12-08-2020
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-clock"></i>&nbsp;4&nbsp;minutos
+  
+  
+    &nbsp;|&nbsp;<i class="fas fa-book"></i>&nbsp;655&nbsp;palabras
+  
+  
+    
+      &nbsp;|&nbsp;<i class="fas fa-user"></i>&nbsp;Enrique Saborit Crespo
+    
+  
+  
+</span>
+
+
+              
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+
+
+    
+<div class="container" role="main">
+    <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <article role="main" class="blog-post">
+                <p>Para facilitar algunos de mis trámites con la administración pública, tanto local como estatal, voy a instalar un lector de DNIe en mi máquina con Debian Buster y los certificados de dicho documento en el navegador web Firefox 68.12.0esr (64-bit).</p>
+<p> </p>
+<h3 id="preparando-la-instalación">Preparando la instalación</h3>
+<ol>
+<li>
+<p>Instalo los paquetes necesarios para el lector y la gestión de la entrada del PIN</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">usuario@usuariopc:~$ sudo apt-get install pcscd pcsc-tools opensc
+</code></pre></div><p>Dependiendo del entorno de ventanas que esté utilizando, deberé instalar el paquete de pinentry (pinentry-curses para diálogos de consola, pinetry-gtk2 para Gnome o pinentry-qt4 para KDE) que solicita el pin de nuestro DNIe: En mi caso, al usar Gnome, instalaré pinentry-gtk2:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">usuario@usuariopc:~$ sudo apt-get install pinentry-gtk2
+</code></pre></div></li>
+<li>
+<p>Compruebo con el comando pcsc_scan que el sistema reconoce el  lector.
+Conecto el lector USB con el DNI metido, y escribo</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">usuario@usuariopc:~$ pcsc_scan
+</code></pre></div><p>Esta es la salida por consola:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">usuario@usuariopc:~$ pcsc_scan
+
+Using reader plug&#39;n play mechanism
+Scanning present readers...
+0: C3PO LTC31 v2 00 00
+   
+Mon Jun 24 12:35:44 2019
+Reader 0: C3PO LTC31 v2 00 00
+Event number: 0
+Card state: Card inserted, Shared Mode, 
+ATR: 3B 7F 96 00 00 00 6A 44 4E 49 65 10 01 01 55 04 21 03 90 00
+
+ATR: 3B 7F 96 00 00 00 6A 44 4E 49 65 10 01 01 55 04 21 03 90 00
++ TS = 3B --&gt; Direct Convention
++ T0 = 7F, Y(1): 0111, K: 15 (historical bytes)
+TA(1) = 96 --&gt; Fi=512, Di=32, 16 cycles/ETU
+    250000 bits/s at 4 MHz, fMax for Fi = 5 MHz =&gt; 312500 bits/s
+TB(1) = 00 --&gt; VPP is not electrically connected
+TC(1) = 00 --&gt; Extra guard time: 0
++ Historical bytes: 00 6A 44 4E 49 65 10 01 01 55 04 21 03 90 00
+Category indicator byte: 00 (compact TLV data object)
+    Tag: 6, len: A (pre-issuing data)
+    Data: 44 4E 49 65 10 01 01 55 04 21
+    Mandatory status indicator (3 last bytes)
+    LCS (life card cycle): 03 (Initialisation state)
+    SW: 9000 (Normal processing.)
+
+Possibly identified card (using /usr/share/pcsc/smartcard_list.txt):
+3B 7F 96 00 00 00 6A 44 4E 49 65 10 01 01 55 04 21 03 90 00
+3B 7F 96 00 00 00 6A 44 4E 49 65 10 01 01 55 04 .. 03 90 00
+        DNIE Spain (eID)
+        http://www.dnielectronico.es/PortalDNIe/
+</code></pre></div><p>Salgo de  pcsc_scan con <code>Ctrl+C</code> y desconecto el lector de DNI.</p>
+</li>
+<li>
+<p>Descargo el paquete de DNI electrónico, para Debian Buster desde la página de la Policía Nacional</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">usuario@usuariopc:~$ wget https://www.dnielectronico.es/descargas/distribuciones_linux/Debian_10_libpkcs11-dnie_1.5.3_amd64.deb
+</code></pre></div><p>Compruebo que la suma de comprobación es correcta:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">usuario@usuariopc:~$ md5sum Debian_10_libpkcs11-dnie_1.5.3_amd64.deb 
+c9a15dd9ae4327a468f850af93b8ef45   Debian_10_libpkcs11-dnie_1.5.3_amd64.deb
+</code></pre></div></li>
+<li>
+<p>Lo instalo</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">usuario@usuariopc:~$ sudo dpkg -i Debian_10_libpkcs11-dnie_1.5.3_amd64.deb
+</code></pre></div><p>Aquí se instala el paquete pero luego da un error porque intenta abrir Firefox como root, cosa que el sistema no deja.
+Lo que hace es llamar a un script en Perl que es el que lanza Firefox, así que lo llamo como usuario normal: <code>usuario@usuariopc:~$ /usr/share/libpkcs11-dnie/launch.pl</code>.
+Se abre Firefox y hay que seguir las instrucciones de la página web que aparece <code>(file:///usr/share/libpkcs11-dnie/launch.html)</code> para cargar el módulo de seguridad de DNIe, y la autoridad de certificación FNMT.</p>
+</li>
+</ol>
+<p> </p>
+<h4 id="para-usar-el-dni-electrónico-se-requiere">Para usar el DNI electrónico se requiere:</h4>
+<ul>
+<li><strong>Instalar el Módulo de Seguridad PKCS#11</strong><br>
+Para instalar el módulo PCKS#11 debo ir en Firefox a <code>Preferencias/Privacidad &amp; Seguridad/Seguridad/ certificados/Dispositivos de seguridad</code> y selecciono<code>Cargar</code>.<br>
+Le doy un nombre al módulo. (Por ejemplo &ldquo;Modulo DNIe&rdquo;).<br>
+Indico manualmente la ruta del módulo: <code>/usr/lib/libpkcs11-dnie.so</code>.<br>
+Pulso el botón<code>Aceptar</code>.<br>
+ 
+
+<link rel="stylesheet" href="https://esaborit.github.io/css/hugo-easy-gallery.css" />
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/post/dni_pkcs.jpg" alt="/img/post/dni_pkcs.jpg"/>
+    </div>
+    <a href="/img/post/dni_pkcs.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+ 
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/post/dni_pkcs2.jpg" alt="/img/post/dni_pkcs2.jpg"/>
+    </div>
+    <a href="/img/post/dni_pkcs2.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+
+Con la sesión iniciada.<br>
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/post/dni_pkcs3.jpg" alt="/img/post/dni_pkcs3.jpg"/>
+    </div>
+    <a href="/img/post/dni_pkcs3.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+</li>
+</ul>
+<p> </p>
+<ul>
+<li><strong>Instalar el Certificado Raíz de la Autoridad de Certificación del DNIe</strong>     <br>
+Para instalar el certificado raíz debo ir  en Firefox a <code>Preferencias/Privacidad &amp; Seguridad/Seguridad/ certificados/Ver certificados</code> y en la pestaña <code>Autoridades</code> selecciono<code>Importa</code>.<br>
+ 
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/post/dni_cert_raiz.jpg" alt="/img/post/dni_cert_raiz.jpg"/>
+    </div>
+    <a href="/img/post/dni_cert_raiz.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+<br>
+Indico manualmente la ruta del certificado raíz: <code>/usr/share/libpkcs11-dnie/ac_raiz_dnie.crt</code>.<br>
+El asistente me pide que establezca la confianza para el certificado, por lo que marco las tres casillas de confianza y pulso el botón <code>Aceptar</code>.<br>
+ 
+
+
+<div class="box" >
+  <figure  itemprop="associatedMedia" itemscope itemtype="http://schema.org/ImageObject">
+    <div class="img">
+      <img itemprop="thumbnail" src="/img/post/dni_cert_raiz1.jpg" alt="/img/post/dni_cert_raiz1.jpg"/>
+    </div>
+    <a href="/img/post/dni_cert_raiz1.jpg" itemprop="contentUrl"></a>
+  </figure>
+</div>
+</li>
+</ul>
+<p>Una vez hecho esto, cierro Firefox, lo vuelvo a abrir, entro en una web que me pida el DNI electrónico y compruebo que funciona.</p>
+<p> </p>
+                <hr/>
+                <p class="post-meta">
+                    <span class="post-meta">
+                        
+                            <i class="fas fa-tags"></i> 
+                            <a href="https://esaborit.github.io/temas/debian/">Debian</a>&nbsp; 
+                            <a href="https://esaborit.github.io/temas/dnie/">DNIe</a>&nbsp;             
+                        
+                        
+                        
+                            &nbsp;|&nbsp;<i class="fas fa-tasks"></i> 
+                            <a href="https://esaborit.github.io/proyectos/tr%C3%A1mites-administraci%C3%B3n/" alt="Proyectos">Trámites Administración</a>&nbsp;                 
+                            
+                    </span>
+                </p>
+                    
+            </article>
+
+            
+            <ul class="pager blog-pager">
+                
+                <li class="previous">
+                    <a href="https://esaborit.github.io/2020/06/29/openvpn-as-en-mi-servidor-casero/" data-toggle="tooltip" data-placement="top" title="Openvpn-as en mi servidor casero">&larr; Artículo anterior</a>
+                </li>
+                 
+                <li class="next">
+                    <a href="https://esaborit.github.io/2020/08/14/instalacion-de-autofirma-en-debian-10-buster/" data-toggle="tooltip" data-placement="top" title="Instalación de Autofirma en Debian 10 Buster">Artículo siguiente &rarr;</a>
+                </li>
+                
+            </ul>
+                
+
+        </div>
+    </div>
+</div>
+
+      
+<footer>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+        <ul class="list-inline text-center footer-links">
+          
+              <li>
+                <a href="https://github.com/esaborit" title="GitHub">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://gitlab.com/esaborit" title="GitLab">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-gitlab fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li>
+                <a href="https://linkedin.com/in/esaborit" title="LinkedIn">
+                  <span class="fa-stack fa-lg">
+                    <i class="fas fa-circle fa-stack-2x"></i>
+                    <i class="fab fa-linkedin fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+          
+        </ul>
+        <p class="credits copyright text-muted">
+          
+            
+              <a href="https://esaborit.github.io/">Enrique Saborit Crespo</a>
+            
+          
+
+          &nbsp;&bull;&nbsp;&copy;
+          
+            2020
+          
+
+          
+            &nbsp;&bull;&nbsp;
+            <a href="https://esaborit.github.io">ESC</a>
+          
+        </p>
+        
+        <p class="credits theme-by text-muted">
+          <a href="https://gohugo.io">Hugo v0.75.1</a> alimentada &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptado de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          
+        </p>
+      </div>
+    </div>
+  </div>
+</footer><script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.js" integrity="sha384-K3vbOmF2BtaVai+Qk37uypf7VrgBubhQreNQe9aGsz9lB63dIFiQVlJbr92dw2Lx" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/contrib/auto-render.min.js" integrity="sha384-kmZOZB5ObwgQnS/DuDg6TScgOiWWBiVt0plIRkZCmE6rDZGrEOQeHM5PcHi+nyqe" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+<script src="https://esaborit.github.io/js/main.js"></script>
+<script src="https://esaborit.github.io/js/highlight.min.js"></script>
+<script> hljs.initHighlightingOnLoad(); </script>
+<script> $(document).ready(function() {$("pre.chroma").css("padding","0");}); </script><script> renderMathInElement(document.body); </script><script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe.min.js" integrity="sha384-QELNnmcmU8IR9ZAykt67vGr9/rZJdHbiWi64V88fCPaOohUlHCqUD/unNN0BXSqy" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/photoswipe/4.1.2/photoswipe-ui-default.min.js" integrity="sha384-m67o7SkQ1ALzKZIFh4CiTA8tmadaujiTa9Vu+nqPSwDOqHrDmxLezTdFln8077+q" crossorigin="anonymous"></script><script src="https://esaborit.github.io/js/load-photoswipe.js"></script>
+
+
+
+
+
+
+
+
+
+    
+  </body>
+</html>
+

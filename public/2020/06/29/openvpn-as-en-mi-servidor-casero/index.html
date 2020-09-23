@@ -90,7 +90,7 @@
   <meta name="twitter:image" content="https://esaborit.github.io/img/post/openvpn-as-banner.png" />
   <meta name="twitter:card" content="summary" />
   <link href='https://esaborit.github.io/img/favicon.ico' rel='icon' type='image/x-icon'/>
-  <meta name="generator" content="Hugo 0.73.0" />
+  <meta name="generator" content="Hugo 0.75.1" />
   <link rel="alternate" href="https://esaborit.github.io/index.xml" type="application/rss+xml" title="ESC"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css" integrity="sha384-9eLZqc9ds8eNjO3TmqPeYcDj8n+Qfa4nuSiGYa6DjLNcv9BtN69ZIulL9+8CqC9Y" crossorigin="anonymous">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"><link rel="stylesheet" href="https://esaborit.github.io/css/main.css" /><link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic" />
@@ -325,7 +325,7 @@ Cuando se combina con conexiones HTTPS, esta configuración permite proteger los
 </span><span class="se"></span>  linuxserver/openvpn-as
 </code></pre></div><p>Lo siguiente es ponerlo en funcionamiento</p>
 <div class="highlight"><pre class="chroma"><code class="language-bash" data-lang="bash">docker start openvpn-as
-</code></pre></div><h3 id="configuración-de-la-aplicación-">Configuración de la aplicación</h3>
+</code></pre></div><h3 id="configuración-de-la-aplicación">Configuración de la aplicación</h3>
 <p>Una vez que el contenedor se ha puesto en marcha sin contratiempos puedo configurarlo entrando en la aplicación a través de su interface web desde <code>https://DOCKER-HOST-IP:943/admin</code>.</p>
 <p>Me identifico con el usuario <code>“admin”</code> y la contraseña <code>“password”</code> que son las credenciales asignadas por defecto.
 Durante el primer inicio de sesión me aseguro de que la &ldquo;Autenticación&rdquo; en el interface web esté configurada como <code>&quot;Local&quot;</code> en lugar de <code>&quot;PAM&quot;</code>. Luego configuro las cuentas de usuario que necesito (me parece que solo deja 2) con sus contraseñas (las cuentas de usuario creadas bajo <code>“PAM”</code> no sobreviven a la actualización o recreación del contenedor).</p>
@@ -340,7 +340,7 @@ Durante el primer inicio de sesión me aseguro de que la &ldquo;Autenticación&r
   </figure>
 </div>
 
-<h3 id="creación-de-usuarios-">Creación de usuarios</h3>
+<h3 id="creación-de-usuarios">Creación de usuarios</h3>
 <ol>
 <li>Creo otro usuario y lo configuro como administrador</li>
 <li>Inicio sesión como el nuevo usuario</li>
@@ -432,6 +432,10 @@ Durante el primer inicio de sesión me aseguro de que la &ldquo;Autenticación&r
                     <a href="https://esaborit.github.io/2020/06/25/worpress-y-linuxserver-letsencrypt/" data-toggle="tooltip" data-placement="top" title="WordPress y linuxserver-letsencrypt">&larr; Artículo anterior</a>
                 </li>
                  
+                <li class="next">
+                    <a href="https://esaborit.github.io/2020/08/12/instalacion-de-dnie-en-debian-10-buster/" data-toggle="tooltip" data-placement="top" title="Instalación de DNI electrónico (DNIe) en Debian 10 Buster">Artículo siguiente &rarr;</a>
+                </li>
+                
             </ul>
                 
 
@@ -491,7 +495,7 @@ Durante el primer inicio de sesión me aseguro de que la &ldquo;Autenticación&r
         </p>
         
         <p class="credits theme-by text-muted">
-          <a href="https://gohugo.io">Hugo v0.73.0</a> alimentada &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptado de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
+          <a href="https://gohugo.io">Hugo v0.75.1</a> alimentada &nbsp;&bull;&nbsp; Tema <a href="https://github.com/halogenica/beautifulhugo">Beautiful Hugo</a> adaptado de <a href="https://deanattali.com/beautiful-jekyll/">Beautiful Jekyll</a>
           
         </p>
       </div>
